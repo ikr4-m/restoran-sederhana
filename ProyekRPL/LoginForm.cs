@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
@@ -23,6 +18,22 @@ namespace ProyekRPL
         private void LoginForm_Load(object sender, EventArgs e)
         {
             UserLevel.SelectedIndex = 0;
+
+            // Load form loading
+            Module.LoadingScreen loadingScreen = new Module.LoadingScreen();
+            loadingScreen.Show();
+
+            // Load config
+            loadingScreen.ScreenLoadingText = "Memuat konfigurasi";
+            Initial.ConfigFile();
+            Task.Delay(500).Wait();
+
+            // Open Connection to Database
+            loadingScreen.ScreenLoadingText = "Memanggil koneksi ke database";
+            Initial.SQLConnection();
+            Task.Delay(500).Wait();
+
+            loadingScreen.Close();
         }
 
         private void UsernameClearBtn_Click(object sender, EventArgs e)

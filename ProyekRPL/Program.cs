@@ -14,12 +14,6 @@ namespace ProyekRPL
         [STAThread]
         static void Main()
         {
-            // Load config
-            Initial.ConfigFile();
-
-            // Open Connection to Database
-            Initial.SQLConnection();
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
