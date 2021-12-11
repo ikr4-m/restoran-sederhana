@@ -11,28 +11,16 @@ namespace ProyekRPL.Initialize
             "DatabaseConfig.ini"
         };
 
-        public ConfigFile(bool init = true)
-        {
-            bool configAvailable = true;
+        public bool IsConfigAvailable = true;
 
+        public ConfigFile()
+        {
             foreach (string file in _configFile)
             {
-                if (!File.Exists(file))
-                {
-                    configAvailable = false;
-                }
+                if (!File.Exists(file)) IsConfigAvailable = false;
             }
 
-            if (!configAvailable)
-            {
-                InsertConfigFile();
-                if (init)
-                {
-                    // Exit code
-                    MessageBox.Show("Konfigurasi awal telah dimasukkan dalam sistem, aplikasi akan keluar.");
-                    Environment.Exit(0);
-                }
-            }
+            if (!IsConfigAvailable) InsertConfigFile();
         }
 
         public void InsertConfigFile()

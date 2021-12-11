@@ -78,7 +78,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Initialize\ConfigFile.cs" />
+    <Compile Include="Configuration\ConfigFile.cs" />
+    <Compile Include="Initial.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

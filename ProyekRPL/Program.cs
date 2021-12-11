@@ -15,7 +15,10 @@ namespace ProyekRPL
         static void Main()
         {
             // Load config
-            new Initialize.ConfigFile();
+            Initial.ConfigFile();
+
+            // Open Connection to Database
+            Initial.SQLConnection();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
