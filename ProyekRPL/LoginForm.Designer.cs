@@ -176,6 +176,7 @@
             this.LoginBtn.TabIndex = 11;
             this.LoginBtn.Text = "Login";
             this.LoginBtn.UseSelectable = true;
+            this.LoginBtn.Click += new System.EventHandler(this.LoginBtn_Click);
             // 
             // metroLabel1
             // 

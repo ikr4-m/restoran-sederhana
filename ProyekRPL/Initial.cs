@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using MySqlConnector;
+using MySql.Data.MySqlClient;
 
 namespace ProyekRPL
 {
@@ -16,7 +16,7 @@ namespace ProyekRPL
             }
         }
 
-        public static void SQLConnection()
+        public static void ConfigDatabase()
         {
             try
             {
@@ -25,9 +25,8 @@ namespace ProyekRPL
             catch (MySqlException ex)
             {
                 MessageBox.Show(
-                    string.Format("Terjadi error dengan database:\n{0}\n\nAplikasi dikeluarkan.",
-                        ex.Message),
-                    "Error Database",
+                    string.Format("Terjadi kesalahan dengan server:\n{0}\nPeriksa koneksi dan konfigurasi database kembali. Aplikasi dihentikan.", ex.Message),
+                    "Database Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 Environment.Exit(0);

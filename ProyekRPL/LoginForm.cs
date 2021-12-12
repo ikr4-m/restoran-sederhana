@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 using MetroFramework.Forms;
+using ProyekRPL.Module;
+using MySql.Data.MySqlClient;
 
 namespace ProyekRPL
 {
@@ -19,20 +22,21 @@ namespace ProyekRPL
         {
             UserLevel.SelectedIndex = 0;
 
-            // Load form loading
-            Module.LoadingScreen loadingScreen = new Module.LoadingScreen();
+            // Panggil form loading
+            LoadingScreen loadingScreen = new LoadingScreen();
             loadingScreen.Show();
 
-            // Load config
+            // Panggil config file
             loadingScreen.ScreenLoadingText = "Memuat konfigurasi";
             Initial.ConfigFile();
             Task.Delay(500).Wait();
 
-            // Open Connection to Database
+            // Open Connection ke Database
             loadingScreen.ScreenLoadingText = "Memanggil koneksi ke database";
-            Initial.SQLConnection();
+            Initial.ConfigDatabase();
             Task.Delay(500).Wait();
 
+            // Tutup Loading Screen
             loadingScreen.Close();
         }
 
@@ -57,6 +61,23 @@ namespace ProyekRPL
             }
             else
                 _countMD5++;
+        }
+
+        private void LoginBtn_Click(object sender, EventArgs e)
+        {
+            string query = string.Format("SELECT * FROM user WHERE username='{0}' AND password='{1}' AND role='{2}'",
+                UsernameTxt.Text, MD5Factory.Generate(PasswordTxt.Text), UserLevel.Text);
+
+            var data = SQL.QueryExecutor(query);
+
+            if (data.Length > 0)
+            {
+                MessageBox.Show("Anda telah login atas nama " + data[0][3]);
+            }
+            else
+            {
+                MessageBox.Show("Username atau password anda salah!");
+            }
         }
     }
 }
