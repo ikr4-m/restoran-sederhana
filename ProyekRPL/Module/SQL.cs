@@ -26,7 +26,7 @@ namespace ProyekRPL.Module
                 iniFile.Read("Database", "SQL"));
         }
 
-        public static string[][] QueryExecutor(string query)
+        public static string[][] GetDataQuery(string query)
         {
             Connection.Open();
 
@@ -44,6 +44,30 @@ namespace ProyekRPL.Module
             Connection.Close();
 
             return list.ToArray();
+        }
+
+        public static bool PreparedStatementQuery(string query, string[][] args)
+        {
+            Connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, Connection);
+            foreach (string[] arg in args)
+                cmd.Parameters.AddWithValue(arg[0], arg[1]);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+            return true;
+        }
+
+        public static void NonReturnQuery(string query)
+        {
+            Connection.Open();
+
+            MySqlCommand command = new MySqlCommand(query, Connection);
+            command.CommandText = query;
+
+            command.ExecuteNonQuery();
+            Connection.Close();
         }
     }
 }

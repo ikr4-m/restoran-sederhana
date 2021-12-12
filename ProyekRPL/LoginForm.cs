@@ -68,11 +68,17 @@ namespace ProyekRPL
             string query = string.Format("SELECT * FROM user WHERE username='{0}' AND password='{1}' AND role='{2}'",
                 UsernameTxt.Text, MD5Factory.Generate(PasswordTxt.Text), UserLevel.Text);
 
-            var data = SQL.QueryExecutor(query);
+            var data = SQL.GetDataQuery(query);
 
             if (data.Length > 0)
             {
-                MessageBox.Show("Anda telah login atas nama " + data[0][3]);
+                string[] lData = data[0];
+                // Set login status
+                GlobalState.LoginState = true;
+                GlobalState.ThatUserLogin.ID = uint.Parse(lData[0]);
+                GlobalState.ThatUserLogin.UserName = lData[1];
+                GlobalState.ThatUserLogin.Name = lData[3];
+                Enum.TryParse(lData[4], out GlobalState.ThatUserLogin.Role);
             }
             else
             {
