@@ -82,7 +82,7 @@ namespace ProyekRPL
                 {
                     // Pakai using untuk override form yang sedang dipakai
                     case GlobalState.UserRole.Admin:
-                        using (var form = new Apps.AdminMainForm()) form.ShowDialog();
+                        using (var form = new Apps.Admin.MainForm()) form.ShowDialog();
                         break;
                     default:
                         MessageBox.Show("Not implemented");
