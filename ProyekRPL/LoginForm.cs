@@ -74,11 +74,22 @@ namespace ProyekRPL
             {
                 string[] lData = data[0];
                 // Set login status
-                GlobalState.LoginState = true;
-                GlobalState.ThatUserLogin.ID = uint.Parse(lData[0]);
-                GlobalState.ThatUserLogin.UserName = lData[1];
-                GlobalState.ThatUserLogin.Name = lData[3];
-                Enum.TryParse(lData[4], out GlobalState.ThatUserLogin.Role);
+                LoginState.Activate(uint.Parse(lData[0]), lData[1], lData[3], lData[4]);
+
+                // Lempar ke form masing-masing
+                this.Hide();
+                switch (GlobalState.ThatUserLogin.Role)
+                {
+                    // Pakai using untuk override form yang sedang dipakai
+                    case GlobalState.UserRole.Admin:
+                        using (var form = new Apps.AdminMainForm()) form.ShowDialog();
+                        break;
+                    default:
+                        MessageBox.Show("Not implemented");
+                        this.Show();
+                        break;
+                }
+                this.Show();
             }
             else
             {

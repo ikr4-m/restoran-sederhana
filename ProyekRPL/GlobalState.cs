@@ -9,7 +9,7 @@
         
         public enum UserRole
         {
-            Admin, Kasir, Koki, Waiter
+            Admin, Kasir, Koki, Waiter, None
         }
         /// <summary>
         /// Yang login saat itu
@@ -19,7 +19,7 @@
             public static uint ID = 0;
             public static string UserName = "";
             public static string Name = "";
-            public static UserRole Role = UserRole.Admin;
+            public static UserRole Role = UserRole.None;
         }
     }
 }
