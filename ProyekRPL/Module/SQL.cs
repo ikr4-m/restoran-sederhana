@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
+using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
 namespace ProyekRPL.Module
@@ -33,13 +34,13 @@ namespace ProyekRPL.Module
             List<string[]> list = new List<string[]>();
             MySqlCommand cmd = new MySqlCommand(query, Connection);
 
-            MySqlDataReader reader = cmd.ExecuteReader();
-            string[] data = new string[reader.FieldCount];
-            while (reader.Read())
-            {
-                for (int i = 0; i < reader.FieldCount; i++) data[i] = reader.GetString(i);
-                list.Add(data);
-            }
+            using (MySqlDataReader reader = cmd.ExecuteReader())
+                while (reader.Read())
+                {
+                    string[] data = new string[reader.FieldCount];
+                    for (int i = 0; i < reader.FieldCount; i++) data[i] = reader.GetString(i);
+                    list.Add(data);
+                }
 
             Connection.Close();
 

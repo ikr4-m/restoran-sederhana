@@ -1,33 +1,18 @@
-﻿using System;
+﻿using ProyekRPL.Module;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Windows.Forms;
-using MetroFramework.Forms;
-using ProyekRPL.Module;
 
 namespace ProyekRPL.Apps.Admin
 {
-    public partial class MainForm : MetroForm
+    public partial class MainForm
     {
-        public MainForm()
-        {
-            InitializeComponent();
-        }
-
         public enum EModifyUserMode { Insert, Edit, None }
         public static EModifyUserMode ModifyUserMode = EModifyUserMode.None;
 
-        private string GetValueDataGrid(int cellRow)
+        private void UserInsertDatagrid(string[][] data)
         {
-            var data = UserDataGrid.SelectedRows[0].Cells[cellRow];
-            if (data.Value != null) return data.Value.ToString();
-            else return null;
-        }
-
-        private void RefreshData()
-        {
-            Initial.ConfigDatabase();
-
-            string[][] data = SQL.GetDataQuery("SELECT * FROM user");
             ArrayList arr = new ArrayList();
 
             // Bersihkan data dan masukkan data manual
@@ -39,17 +24,14 @@ namespace ProyekRPL.Apps.Admin
                 arr.Add(s[3]);
                 arr.Add(s[4]);
                 UserDataGrid.Rows.Add(arr.ToArray());
+                arr = new ArrayList();
             }
         }
 
-        private void AdminMainForm_Load(object sender, EventArgs e)
+        private void RefreshUserData()
         {
-            this.RefreshData();
-        }
-
-        private void AdminMainForm_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
-        {
-            LoginState.Reset();
+            Initial.ConfigDatabase();
+            this.UserInsertDatagrid(SQL.GetDataQuery("SELECT * FROM user"));
         }
 
         private void UserInsertData_Click(object sender, EventArgs e)
@@ -57,18 +39,27 @@ namespace ProyekRPL.Apps.Admin
             ModifyUserMode = EModifyUserMode.Insert;
             using (ModifyUser form = new ModifyUser()) form.ShowDialog();
             ModifyUserMode = EModifyUserMode.None;
+            this.RefreshUserData();
         }
 
         private void UserEditData_Click(object sender, EventArgs e)
         {
             ModifyUserMode = EModifyUserMode.Edit;
+
+            // Masukkan data ke dalam dictionary
+            SelectedEditRows = new Dictionary<string, string>();
+            var data = UserDataGrid.SelectedRows[0].Cells;
+            for (int i = 0; i < data.Count; i++)
+                SelectedEditRows.Add(UserDataGrid.Columns[data[i].ColumnIndex].Name, GetValueDataGrid(UserDataGrid, i));
+
             using (ModifyUser form = new ModifyUser()) form.ShowDialog();
             ModifyUserMode = EModifyUserMode.None;
+            this.RefreshUserData();
         }
 
         private void UserDeleteData_Click(object sender, EventArgs e)
         {
-            uint id = uint.Parse(this.GetValueDataGrid(0));
+            uint id = uint.Parse(this.GetValueDataGrid(UserDataGrid, 0));
             if (id == 1)
             {
                 MessageBox.Show("Anda tidak bisa menghapus akun superadmin!", "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -79,11 +70,26 @@ namespace ProyekRPL.Apps.Admin
                 MessageBox.Show("Anda tidak bisa menghapus akun anda sendiri!", "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            DialogResult dialog = MessageBox.Show("Apakah anda yakin untuk menghapus data ini?", "Pertanyaan", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialog == DialogResult.No) return;
+            SQL.NonReturnQuery(string.Format("DELETE FROM user WHERE id='{0}'", id.ToString()));
+
+            MessageBox.Show("User telah terhapus!", "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.RefreshUserData();
         }
 
         private void UserRefreshData_Click(object sender, EventArgs e)
         {
-            this.RefreshData();
+            this.RefreshUserData();
+        }
+
+        private void UserSearchTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode != Keys.Enter) return;
+            string query = UserSearchTextBox.Text;
+            query = string.Format("SELECT * FROM user WHERE id LIKE '%{0}%' OR username LIKE '%{0}%' OR nama LIKE '%{0}%' OR role LIKE '%{0}%'", query);
+            this.UserInsertDatagrid(SQL.GetDataQuery(query));
         }
     }
 }

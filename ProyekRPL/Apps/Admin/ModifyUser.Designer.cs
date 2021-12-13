@@ -139,6 +139,11 @@
             "Koki"});
             this.RoleCmb.FormattingEnabled = true;
             this.RoleCmb.ItemHeight = 23;
+            this.RoleCmb.Items.AddRange(new object[] {
+            "Admin",
+            "Kasir",
+            "Waiter",
+            "Koki"});
             this.RoleCmb.Location = new System.Drawing.Point(148, 167);
             this.RoleCmb.Name = "RoleCmb";
             this.RoleCmb.Size = new System.Drawing.Size(151, 29);
@@ -189,6 +194,7 @@
             this.ExecuteButton.TabIndex = 8;
             this.ExecuteButton.Text = "ExecuteButton";
             this.ExecuteButton.UseSelectable = true;
+            this.ExecuteButton.Click += new System.EventHandler(this.ExecuteButton_Click);
             // 
             // ExitButton
             // 
