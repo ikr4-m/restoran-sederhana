@@ -137,16 +137,17 @@
             "Kasir",
             "Waiter",
             "Koki"});
+            this.RoleCmb.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.RoleCmb.FormattingEnabled = true;
-            this.RoleCmb.ItemHeight = 23;
+            this.RoleCmb.ItemHeight = 19;
             this.RoleCmb.Items.AddRange(new object[] {
             "Admin",
             "Kasir",
             "Waiter",
             "Koki"});
-            this.RoleCmb.Location = new System.Drawing.Point(148, 167);
+            this.RoleCmb.Location = new System.Drawing.Point(148, 169);
             this.RoleCmb.Name = "RoleCmb";
-            this.RoleCmb.Size = new System.Drawing.Size(151, 29);
+            this.RoleCmb.Size = new System.Drawing.Size(151, 25);
             this.RoleCmb.TabIndex = 3;
             this.RoleCmb.UseSelectable = true;
             // 
@@ -180,7 +181,7 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(43, 172);
+            this.metroLabel4.Location = new System.Drawing.Point(43, 175);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(35, 19);
             this.metroLabel4.TabIndex = 7;

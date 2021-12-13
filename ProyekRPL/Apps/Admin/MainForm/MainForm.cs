@@ -19,8 +19,10 @@ namespace ProyekRPL.Apps.Admin
 
         private void AdminMainForm_Load(object sender, EventArgs e)
         {
+            Initial.ConfigDatabase();
             this.TabCon.SelectedTab = UserManagementTab;
             this.RefreshUserData();
+            this.RefreshMenuData();
         }
 
         private void AdminMainForm_FormClosing(object sender, FormClosingEventArgs e)

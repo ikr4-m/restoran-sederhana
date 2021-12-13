@@ -1,8 +1,8 @@
-﻿using ProyekRPL.Module;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using ProyekRPL.Module;
 
 namespace ProyekRPL.Apps.Admin
 {
@@ -30,7 +30,6 @@ namespace ProyekRPL.Apps.Admin
 
         private void RefreshUserData()
         {
-            Initial.ConfigDatabase();
             this.UserInsertDatagrid(SQL.GetDataQuery("SELECT * FROM user"));
         }
 
@@ -75,7 +74,7 @@ namespace ProyekRPL.Apps.Admin
             if (dialog == DialogResult.No) return;
             SQL.NonReturnQuery(string.Format("DELETE FROM user WHERE id='{0}'", id.ToString()));
 
-            MessageBox.Show("User telah terhapus!", "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("User telah terhapus!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.RefreshUserData();
         }
 

@@ -69,13 +69,11 @@ namespace ProyekRPL.Apps.Admin
                     MessageBox.Show("Isian masih ada yang kosong!", "Perhatian", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
                 string query = string.Format("INSERT INTO user (username, password, nama, role) VALUES ('{0}','{1}','{2}','{3}')",
                     UsernameTxt.Text, Module.MD5Factory.Generate(PasswordTxt.Text), NameTxt.Text, RoleCmb.Text);
                 Module.SQL.NonReturnQuery(query);
 
                 MessageBox.Show("User berhasil ditambah!", "Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
             }
             if (MainForm.ModifyUserMode == MainForm.EModifyUserMode.Edit)
             {
@@ -96,8 +94,8 @@ namespace ProyekRPL.Apps.Admin
                 Module.SQL.NonReturnQuery(query);
 
                 MessageBox.Show("User berhasil diubah!", "Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
             }
+            this.Close();
         }
     }
 }
