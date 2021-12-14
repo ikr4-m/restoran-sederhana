@@ -211,14 +211,14 @@
             // manajemenUserToolStripMenuItem
             // 
             this.manajemenUserToolStripMenuItem.Name = "manajemenUserToolStripMenuItem";
-            this.manajemenUserToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.manajemenUserToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.manajemenUserToolStripMenuItem.Text = "Manajemen User";
             this.manajemenUserToolStripMenuItem.Click += new System.EventHandler(this.manajemenUserToolStripMenuItem_Click);
             // 
             // manajemenMenuToolStripMenuItem
             // 
             this.manajemenMenuToolStripMenuItem.Name = "manajemenMenuToolStripMenuItem";
-            this.manajemenMenuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.manajemenMenuToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.manajemenMenuToolStripMenuItem.Text = "Manajemen Menu";
             this.manajemenMenuToolStripMenuItem.Click += new System.EventHandler(this.manajemenMenuToolStripMenuItem_Click);
             // 
@@ -293,7 +293,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainForm";
+            this.Text = "Aplikasi";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.statusStrip1.ResumeLayout(false);

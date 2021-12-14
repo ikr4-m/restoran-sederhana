@@ -37,6 +37,7 @@
             this.MenuDataGrid = new System.Windows.Forms.DataGridView();
             this.IDMenu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NamaMenuDisplay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HargaMenu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MenuSearchTxt = new MetroFramework.Controls.MetroTextBox();
             this.PriceLabel = new System.Windows.Forms.Label();
             this.BuyBtn = new MetroFramework.Controls.MetroButton();
@@ -112,11 +113,14 @@
             this.MenuDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.MenuDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDMenu,
-            this.NamaMenuDisplay});
+            this.NamaMenuDisplay,
+            this.HargaMenu});
             this.MenuDataGrid.Location = new System.Drawing.Point(734, 163);
             this.MenuDataGrid.Name = "MenuDataGrid";
             this.MenuDataGrid.Size = new System.Drawing.Size(243, 418);
             this.MenuDataGrid.TabIndex = 2;
+            this.MenuDataGrid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MenuDataGrid_KeyPress);
+            this.MenuDataGrid.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.MenuDataGrid_MouseDoubleClick);
             // 
             // IDMenu
             // 
@@ -131,6 +135,13 @@
             this.NamaMenuDisplay.HeaderText = "Nama Menu";
             this.NamaMenuDisplay.Name = "NamaMenuDisplay";
             this.NamaMenuDisplay.ReadOnly = true;
+            // 
+            // HargaMenu
+            // 
+            this.HargaMenu.HeaderText = "Harga";
+            this.HargaMenu.Name = "HargaMenu";
+            this.HargaMenu.ReadOnly = true;
+            this.HargaMenu.Visible = false;
             // 
             // MenuSearchTxt
             // 
@@ -163,6 +174,7 @@
             this.MenuSearchTxt.WaterMark = "Cari Barang (F1)";
             this.MenuSearchTxt.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.MenuSearchTxt.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.MenuSearchTxt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MenuSearchTxt_KeyDown);
             // 
             // PriceLabel
             // 
@@ -252,9 +264,9 @@
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.Location = new System.Drawing.Point(330, 64);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(85, 19);
+            this.metroLabel2.Size = new System.Drawing.Size(89, 19);
             this.metroLabel2.TabIndex = 11;
-            this.metroLabel2.Text = "Nomor Meja";
+            this.metroLabel2.Text = "No. Meja (F6)";
             // 
             // TableNumberTxt
             // 
@@ -348,8 +360,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.DataGridView MenuDataGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDMenu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NamaMenuDisplay;
         private MetroFramework.Controls.MetroTextBox MenuSearchTxt;
         private System.Windows.Forms.Label PriceLabel;
         private MetroFramework.Controls.MetroButton BuyBtn;
@@ -361,5 +371,8 @@
         private System.Windows.Forms.NumericUpDown TableNumberTxt;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroTextBox InvoiceIDTxt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDMenu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NamaMenuDisplay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HargaMenu;
     }
 }

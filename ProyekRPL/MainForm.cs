@@ -42,6 +42,7 @@ namespace ProyekRPL
                 {
                     case GlobalState.UserRole.Admin:
                         adminToolStripMenuItem.Visible = true;
+                        kasirToolStripMenuItem.Visible = true;
                         laporanToolStripMenuItem.Visible = true;
                         break;
                     case GlobalState.UserRole.Kasir:
