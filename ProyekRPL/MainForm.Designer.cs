@@ -220,6 +220,7 @@
             this.manajemenMenuToolStripMenuItem.Name = "manajemenMenuToolStripMenuItem";
             this.manajemenMenuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.manajemenMenuToolStripMenuItem.Text = "Manajemen Menu";
+            this.manajemenMenuToolStripMenuItem.Click += new System.EventHandler(this.manajemenMenuToolStripMenuItem_Click);
             // 
             // kasirToolStripMenuItem
             // 
@@ -227,6 +228,7 @@
             this.kasirToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.kasirToolStripMenuItem.Text = "Kasir";
             this.kasirToolStripMenuItem.Visible = false;
+            this.kasirToolStripMenuItem.Click += new System.EventHandler(this.kasirToolStripMenuItem_Click);
             // 
             // waiterToolStripMenuItem
             // 
@@ -289,10 +291,10 @@
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();

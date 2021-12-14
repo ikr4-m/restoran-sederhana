@@ -28,6 +28,7 @@ namespace ProyekRPL
 
                 // Tutup tab
                 adminToolStripMenuItem.Visible = false;
+                kasirToolStripMenuItem.Visible = false;
                 laporanToolStripMenuItem.Visible = false;
             }
             else
@@ -41,6 +42,10 @@ namespace ProyekRPL
                 {
                     case GlobalState.UserRole.Admin:
                         adminToolStripMenuItem.Visible = true;
+                        laporanToolStripMenuItem.Visible = true;
+                        break;
+                    case GlobalState.UserRole.Kasir:
+                        kasirToolStripMenuItem.Visible = true;
                         laporanToolStripMenuItem.Visible = true;
                         break;
                 }
@@ -105,6 +110,16 @@ namespace ProyekRPL
         private void manajemenUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (var form = new Apps.Admin.UserManager()) form.ShowDialog();
+        }
+
+        private void manajemenMenuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var form = new Apps.Admin.MenuManager()) form.ShowDialog();
+        }
+
+        private void kasirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var form = new Apps.Cashier.MainForm()) form.ShowDialog();
         }
     }
 }
