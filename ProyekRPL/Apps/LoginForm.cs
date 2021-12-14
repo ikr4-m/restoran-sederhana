@@ -7,7 +7,7 @@ using MetroFramework.Forms;
 using ProyekRPL.Module;
 using MySql.Data.MySqlClient;
 
-namespace ProyekRPL
+namespace ProyekRPL.Apps
 {
     public partial class LoginForm : MetroForm
     {

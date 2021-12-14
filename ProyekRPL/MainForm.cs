@@ -25,12 +25,25 @@ namespace ProyekRPL
                 LoginStatusBar.Text = "Tidak";
                 UserFullnameBar.Text = "Belum Login";
                 LevelUserBar.Text = Enum.GetName(typeof(GlobalState.UserRole), 0);
+
+                // Tutup tab
+                adminToolStripMenuItem.Visible = false;
+                laporanToolStripMenuItem.Visible = false;
             }
             else
             {
                 LoginStatusBar.Text = "Ya";
                 UserFullnameBar.Text = GlobalState.ThatUserLogin.Name;
                 LevelUserBar.Text = Enum.GetName(typeof(GlobalState.UserRole), GlobalState.ThatUserLogin.Role);
+
+                // Buka tab
+                switch (GlobalState.ThatUserLogin.Role)
+                {
+                    case GlobalState.UserRole.Admin:
+                        adminToolStripMenuItem.Visible = true;
+                        laporanToolStripMenuItem.Visible = true;
+                        break;
+                }
             }
         }
 
@@ -73,10 +86,13 @@ namespace ProyekRPL
             if (GlobalState.LoginState == false)
             {
                 // Tunggu hingga login form tertutup
-                using (var form = new LoginForm()) form.ShowDialog();
+                using (var form = new Apps.LoginForm()) form.ShowDialog();
 
-                this.ChangeStatusBar();
-                loginToolStripMenuItem.Text = "Logout";
+                if (GlobalState.LoginState == true)
+                {
+                    loginToolStripMenuItem.Text = "Logout";
+                    this.ChangeStatusBar();
+                }
             }
             else
             {

@@ -1,4 +1,4 @@
-﻿namespace ProyekRPL
+﻿namespace ProyekRPL.Apps
 {
     partial class LoginForm
     {
@@ -202,6 +202,7 @@
             this.Movable = false;
             this.Name = "LoginForm";
             this.Resizable = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Login ke Aplikasi";
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.UsernameTxtMargin.ResumeLayout(false);
