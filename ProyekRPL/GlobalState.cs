@@ -9,7 +9,7 @@
         
         public enum UserRole
         {
-            Admin, Kasir, Koki, Waiter, None
+            None, Admin, Kasir, Koki, Waiter
         }
         /// <summary>
         /// Yang login saat itu

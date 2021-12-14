@@ -8,7 +8,8 @@ namespace ProyekRPL.Initialize
     {
         private string[] _configFile =
         {
-            "DatabaseConfig.ini"
+            "DatabaseConfig.ini",
+            "ApplicationConfig.ini"
         };
 
         public bool IsConfigAvailable = true;
@@ -26,6 +27,7 @@ namespace ProyekRPL.Initialize
         public void InsertConfigFile()
         {
             ConfigDatabaseConfig();
+            ConfigApplication();
         }
 
         private void ConfigDatabaseConfig()
@@ -35,6 +37,12 @@ namespace ProyekRPL.Initialize
             ini.Write("Username", "root", "SQL");
             ini.Write("Password", "", "SQL");
             ini.Write("Database", "mydatabase", "SQL");
+        }
+
+        private void ConfigApplication()
+        {
+            Module.IniFile ini = new Module.IniFile(_configFile[1]);
+            ini.Write("RestaurantName", "Restoran Mundur Terus", "General");
         }
     }
 }

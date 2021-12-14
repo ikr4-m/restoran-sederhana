@@ -112,7 +112,6 @@
             this.UserSearchTextBox.MaxLength = 32767;
             this.UserSearchTextBox.Name = "UserSearchTextBox";
             this.UserSearchTextBox.PasswordChar = '\0';
-            this.UserSearchTextBox.PromptText = "Cari di sini";
             this.UserSearchTextBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.UserSearchTextBox.SelectedText = "";
             this.UserSearchTextBox.SelectionLength = 0;
@@ -277,7 +276,6 @@
             this.MenuSearchTextBox.MaxLength = 32767;
             this.MenuSearchTextBox.Name = "MenuSearchTextBox";
             this.MenuSearchTextBox.PasswordChar = '\0';
-            this.MenuSearchTextBox.PromptText = "Cari di sini";
             this.MenuSearchTextBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.MenuSearchTextBox.SelectedText = "";
             this.MenuSearchTextBox.SelectionLength = 0;

@@ -21,23 +21,6 @@ namespace ProyekRPL
         private void LoginForm_Load(object sender, EventArgs e)
         {
             UserLevel.SelectedIndex = 0;
-
-            // Panggil form loading
-            LoadingScreen loadingScreen = new LoadingScreen();
-            loadingScreen.Show();
-
-            // Panggil config file
-            loadingScreen.ScreenLoadingText = "Memuat konfigurasi";
-            Initial.ConfigFile();
-            Task.Delay(500).Wait();
-
-            // Open Connection ke Database
-            loadingScreen.ScreenLoadingText = "Memanggil koneksi ke database";
-            Initial.ConfigDatabase();
-            Task.Delay(500).Wait();
-
-            // Tutup Loading Screen
-            loadingScreen.Close();
         }
 
         private void UsernameClearBtn_Click(object sender, EventArgs e)
@@ -76,20 +59,8 @@ namespace ProyekRPL
                 // Set login status
                 LoginState.Activate(uint.Parse(lData[0]), lData[1], lData[3], lData[4]);
 
-                // Lempar ke form masing-masing
-                this.Hide();
-                switch (GlobalState.ThatUserLogin.Role)
-                {
-                    // Pakai using untuk override form yang sedang dipakai
-                    case GlobalState.UserRole.Admin:
-                        using (var form = new Apps.Admin.MainForm()) form.ShowDialog();
-                        break;
-                    default:
-                        MessageBox.Show("Not implemented");
-                        this.Show();
-                        break;
-                }
-                this.Show();
+                // Keluar
+                this.Close();
             }
             else
             {

@@ -19,7 +19,7 @@ namespace ProyekRPL.Module
 
         public static void Reset()
         {
-            GlobalState.LoginState = true;
+            GlobalState.LoginState = false;
             GlobalState.ThatUserLogin.ID = 0;
             GlobalState.ThatUserLogin.UserName = "";
             GlobalState.ThatUserLogin.Name = "";

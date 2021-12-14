@@ -122,6 +122,12 @@
     <Compile Include="Apps\Admin\ModifyUser.Designer.cs">
       <DependentUpon>ModifyUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Apps\Cashier\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apps\Cashier\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Configuration\ConfigFile.cs" />
     <Compile Include="GlobalState.cs" />
     <Compile Include="Initial.cs" />
@@ -130,6 +136,12 @@
     </Compile>
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Module\IniFile.cs" />
     <Compile Include="Module\LoadingScreen.cs">
@@ -161,8 +173,14 @@
     <EmbeddedResource Include="Apps\Admin\ModifyUser.resx">
       <DependentUpon>ModifyUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Apps\Cashier\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MD5Generator.resx">
       <DependentUpon>MD5Generator.cs</DependentUpon>
