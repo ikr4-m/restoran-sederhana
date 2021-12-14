@@ -211,13 +211,13 @@
             // manajemenUserToolStripMenuItem
             // 
             this.manajemenUserToolStripMenuItem.Name = "manajemenUserToolStripMenuItem";
-            this.manajemenUserToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.manajemenUserToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.manajemenUserToolStripMenuItem.Text = "Manajemen User";
             // 
             // manajemenMenuToolStripMenuItem
             // 
             this.manajemenMenuToolStripMenuItem.Name = "manajemenMenuToolStripMenuItem";
-            this.manajemenMenuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.manajemenMenuToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.manajemenMenuToolStripMenuItem.Text = "Manajemen Menu";
             // 
             // kasirToolStripMenuItem
@@ -281,9 +281,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.BackgroundImage = global::ProyekRPL.Properties.Resources.background;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1064, 481);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.DoubleBuffered = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MinimizeBox = false;
             this.Name = "MainForm";
