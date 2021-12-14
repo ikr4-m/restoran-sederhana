@@ -101,5 +101,10 @@ namespace ProyekRPL
                 loginToolStripMenuItem.Text = "Login";
             }
         }
+
+        private void manajemenUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var form = new Apps.Admin.UserManager()) form.ShowDialog();
+        }
     }
 }

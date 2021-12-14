@@ -22,22 +22,22 @@ namespace ProyekRPL.Apps.Admin
 
         private void CallEditedData()
         {
-            MenuNameTxt.Text = MainForm.SelectedEditRows["NamaMenu"];
-            MenuCategoryCmb.Text = MainForm.SelectedEditRows["JenisMenu"];
-            PriceTxt.Text = MainForm.SelectedEditRows["Harga"];
-            MenuStatusCmb.Text = MainForm.SelectedEditRows["StatusMenu"];
-            this._id = uint.Parse(MainForm.SelectedEditRows["IDMenu"]);
+            MenuNameTxt.Text = MenuManager.SelectedEditRows["NamaMenu"];
+            MenuCategoryCmb.Text = MenuManager.SelectedEditRows["JenisMenu"];
+            PriceTxt.Text = MenuManager.SelectedEditRows["Harga"];
+            MenuStatusCmb.Text = MenuManager.SelectedEditRows["StatusMenu"];
+            this._id = uint.Parse(MenuManager.SelectedEditRows["IDMenu"]);
         }
 
         private void ModifyMenu_Load(object sender, EventArgs e)
         {
-            switch (MainForm.ModifyMenuMode)
+            switch (MenuManager.ModifyMenuMode)
             {
-                case MainForm.EModifyMenuMode.Insert:
+                case MenuManager.EModifyMenuMode.Insert:
                     this.Text = "Tambah Menu";
                     this.ExecuteButton.Text = "Tambah";
                     break;
-                case MainForm.EModifyMenuMode.Edit:
+                case MenuManager.EModifyMenuMode.Edit:
                     this.Text = "Ubah Menu";
                     this.ExecuteButton.Text = "Ubah";
                     this.CallEditedData();
@@ -67,7 +67,7 @@ namespace ProyekRPL.Apps.Admin
                 MessageBox.Show("Isian masih ada yang kosong!", "Perhatian", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (MainForm.ModifyMenuMode == MainForm.EModifyMenuMode.Insert)
+            if (MenuManager.ModifyMenuMode == MenuManager.EModifyMenuMode.Insert)
             {
                 string query = string.Format("INSERT INTO menu (nama_menu, jenis_menu, harga, status_menu) " +
                     "VALUES ('{0}','{1}','{2}','{3}')",
@@ -79,7 +79,7 @@ namespace ProyekRPL.Apps.Admin
                 Module.SQL.NonReturnQuery(query);
                 MessageBox.Show("Menu berhasil ditambah!", "Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            if (MainForm.ModifyMenuMode == MainForm.EModifyMenuMode.Edit)
+            if (MenuManager.ModifyMenuMode == MenuManager.EModifyMenuMode.Edit)
             {
                 string query = string.Format("UPDATE menu SET nama_menu='{0}', jenis_menu='{1}', harga='{2}', status_menu='{3}' WHERE id='{4}'",
                     MenuNameTxt.Text,

@@ -22,22 +22,22 @@ namespace ProyekRPL.Apps.Admin
 
         private void CallEditedData()
         {
-            UsernameTxt.Text = MainForm.SelectedEditRows["Username"];
-            NameTxt.Text = MainForm.SelectedEditRows["Fullname"];
-            RoleCmb.Text = MainForm.SelectedEditRows["Role"];
-            this._id = uint.Parse(MainForm.SelectedEditRows["ID"]);
+            UsernameTxt.Text = UserManager.SelectedEditRows["Username"];
+            NameTxt.Text = UserManager.SelectedEditRows["Fullname"];
+            RoleCmb.Text = UserManager.SelectedEditRows["Role"];
+            this._id = uint.Parse(UserManager.SelectedEditRows["ID"]);
         }
 
         private void ModifyUser_Load(object sender, EventArgs e)
         {
             // Ganti title
-            switch (MainForm.ModifyUserMode)
+            switch (UserManager.ModifyUserMode)
             {
-                case MainForm.EModifyUserMode.Insert: 
+                case UserManager.EModifyUserMode.Insert: 
                     this.Text = "Tambah User";
                     this.ExecuteButton.Text = "Tambah";
                     break;
-                case MainForm.EModifyUserMode.Edit:
+                case UserManager.EModifyUserMode.Edit:
                     this.Text = "Ubah User";
                     this.ExecuteButton.Text = "Ubah";
                     this.CallEditedData();
@@ -62,7 +62,7 @@ namespace ProyekRPL.Apps.Admin
 
         private void ExecuteButton_Click(object sender, EventArgs e)
         {
-            if (MainForm.ModifyUserMode == MainForm.EModifyUserMode.Insert)
+            if (UserManager.ModifyUserMode == UserManager.EModifyUserMode.Insert)
             {
                 if (this.IsEmpty())
                 {
@@ -75,7 +75,7 @@ namespace ProyekRPL.Apps.Admin
 
                 MessageBox.Show("User berhasil ditambah!", "Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            if (MainForm.ModifyUserMode == MainForm.EModifyUserMode.Edit)
+            if (UserManager.ModifyUserMode == UserManager.EModifyUserMode.Edit)
             {
                 if (this.IsEmpty(true))
                 {

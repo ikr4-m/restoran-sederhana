@@ -182,19 +182,19 @@
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.loginToolStripMenuItem.Text = "Login";
             this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(104, 6);
             // 
             // keluarToolStripMenuItem
             // 
             this.keluarToolStripMenuItem.Name = "keluarToolStripMenuItem";
-            this.keluarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.keluarToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.keluarToolStripMenuItem.Text = "Keluar";
             this.keluarToolStripMenuItem.Click += new System.EventHandler(this.keluarToolStripMenuItem_Click);
             // 
@@ -211,13 +211,14 @@
             // manajemenUserToolStripMenuItem
             // 
             this.manajemenUserToolStripMenuItem.Name = "manajemenUserToolStripMenuItem";
-            this.manajemenUserToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.manajemenUserToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.manajemenUserToolStripMenuItem.Text = "Manajemen User";
+            this.manajemenUserToolStripMenuItem.Click += new System.EventHandler(this.manajemenUserToolStripMenuItem_Click);
             // 
             // manajemenMenuToolStripMenuItem
             // 
             this.manajemenMenuToolStripMenuItem.Name = "manajemenMenuToolStripMenuItem";
-            this.manajemenMenuToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.manajemenMenuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.manajemenMenuToolStripMenuItem.Text = "Manajemen Menu";
             // 
             // kasirToolStripMenuItem
