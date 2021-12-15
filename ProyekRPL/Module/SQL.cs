@@ -60,7 +60,7 @@ namespace ProyekRPL.Module
             return true;
         }
 
-        public static void NonReturnQuery(string query)
+        public static MySqlCommand NonReturnQuery(string query)
         {
             Connection.Open();
 
@@ -69,6 +69,8 @@ namespace ProyekRPL.Module
 
             command.ExecuteNonQuery();
             Connection.Close();
+
+            return command;
         }
     }
 }

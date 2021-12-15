@@ -100,6 +100,7 @@ namespace ProyekRPL.Apps.Cashier
             this.RefreshMenuData();
             this.CustomerNameTxt.Focus();
             this.ChangeLabel.Visible = false;
+            GlobalState.InvoiceID = 0;
         }
 
         private void MenuSearchTxt_KeyDown(object sender, KeyEventArgs e)
@@ -157,6 +158,12 @@ namespace ProyekRPL.Apps.Cashier
 
         private void BuyBtn_Click(object sender, EventArgs e)
         {
+            if (CustomerNameTxt.Text == "")
+            {
+                MessageBox.Show("Anda tidak menulis nama pemesan!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomerNameTxt.Focus();
+                return;
+            }
             if (OrderDataGrid.Rows.Count == 0)
             {
                 MessageBox.Show("Anda belum memesan satupun!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -166,15 +173,31 @@ namespace ProyekRPL.Apps.Cashier
             using (var form = new Transaction()) form.ShowDialog();
 
             PayPrice = Transaction.PayPrice;
-
             if (PayPrice > 0)
             {
+                // Simpan semua datanya ke database
+                string query = string.Format("INSERT INTO pesanan (user_id, nama_pemesan, nomor_meja) VALUES ('{0}','{1}','{2}')",
+                    GlobalState.ThatUserLogin.ID,
+                    CustomerNameTxt.Text,
+                    TableNumberTxt.Value);
+                var lastID = SQL.NonReturnQuery(query).LastInsertedId;
+
+                // Simpan data di tabel ke database
+                query = "INSERT INTO list_pesanan (pesanan_id, menu_id, qty) VALUES ";
+                List<string> list = new List<string>();
+                foreach (DataGridViewRow row in OrderDataGrid.Rows)
+                    list.Add(string.Format("('{0}','{1}','{2}')", lastID, row.Cells[0].Value, row.Cells[3].Value));
+                query += string.Join(", ", list.ToArray());
+                SQL.NonReturnQuery(query);
+
+                // Ganti UI
                 string change = string.Format(GlobalState.CultureInfo, "{0:C0}", (PayPrice - GrandTotalPrice));
                 ChangeLabel.Text = "Kembalian:\n" + change;
                 ChangeLabel.Visible = true;
                 BuyBtn.Enabled = false;
                 PrintBtn.Enabled = true;
                 InvoiceIDTxt.Text = Transaction.InvoiceID.ToString();
+                GlobalState.InvoiceID = (uint)lastID;
             }
         }
 
@@ -193,6 +216,7 @@ namespace ProyekRPL.Apps.Cashier
             BuyBtn.Enabled = true;
             PrintBtn.Enabled = false;
             InvoiceIDTxt.Text = "";
+            GlobalState.InvoiceID = 0;
 
             this.CustomerNameTxt.Clear();
             this.CustomerNameTxt.Focus();
