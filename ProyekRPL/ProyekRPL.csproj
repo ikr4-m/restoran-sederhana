@@ -140,6 +140,30 @@
     <Compile Include="Apps\Cashier\Transaction.Designer.cs">
       <DependentUpon>Transaction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Apps\Report\Invoice\InvoiceList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apps\Report\Invoice\InvoiceList.Designer.cs">
+      <DependentUpon>InvoiceList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apps\Report\Invoice\PeekInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apps\Report\Invoice\PeekInvoice.Designer.cs">
+      <DependentUpon>PeekInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apps\Tracing\Tracer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apps\Tracing\Tracer.Designer.cs">
+      <DependentUpon>Tracer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apps\Tracing\TracerPeeker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apps\Tracing\TracerPeeker.Designer.cs">
+      <DependentUpon>TracerPeeker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Configuration\ConfigFile.cs" />
     <Compile Include="GlobalState.cs" />
     <Compile Include="Initial.cs" />
@@ -194,6 +218,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Apps\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apps\Report\Invoice\InvoiceList.resx">
+      <DependentUpon>InvoiceList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apps\Report\Invoice\PeekInvoice.resx">
+      <DependentUpon>PeekInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apps\Tracing\Tracer.resx">
+      <DependentUpon>Tracer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apps\Tracing\TracerPeeker.resx">
+      <DependentUpon>TracerPeeker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

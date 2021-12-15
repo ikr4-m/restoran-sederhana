@@ -16,8 +16,11 @@ namespace ProyekRPL.Module
         public static int IsIncludeCell(DataGridView grid, int cell, string value)
         {
             int include = -1;
-            for (int i = 0; i < grid.Rows.Count; i++)
-                if (grid.Rows[i].Cells[cell].Value.ToString() == value) include = i;
+            if (grid.RowCount > 0)
+            {
+                for (int i = 0; i < grid.Rows.Count; i++)
+                    if (grid.Rows[i].Cells[cell].Value.ToString() == value) include = i;
+            }
 
             return include;
         }

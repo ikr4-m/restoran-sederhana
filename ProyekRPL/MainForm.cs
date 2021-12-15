@@ -29,6 +29,7 @@ namespace ProyekRPL
                 // Tutup tab
                 adminToolStripMenuItem.Visible = false;
                 kasirToolStripMenuItem.Visible = false;
+                trackerToolStripMenuItem.Visible = false;
                 laporanToolStripMenuItem.Visible = false;
             }
             else
@@ -44,10 +45,15 @@ namespace ProyekRPL
                         adminToolStripMenuItem.Visible = true;
                         kasirToolStripMenuItem.Visible = true;
                         laporanToolStripMenuItem.Visible = true;
+                        trackerToolStripMenuItem.Visible = true;
                         break;
                     case GlobalState.UserRole.Kasir:
                         kasirToolStripMenuItem.Visible = true;
                         laporanToolStripMenuItem.Visible = true;
+                        break;
+                    case GlobalState.UserRole.Koki:
+                    case GlobalState.UserRole.Waiter:
+                        trackerToolStripMenuItem.Visible = true;
                         break;
                 }
             }
@@ -121,6 +127,16 @@ namespace ProyekRPL
         private void kasirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (var form = new Apps.Cashier.MainForm()) form.ShowDialog();
+        }
+
+        private void riwayatTransaksiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var form = new Apps.Report.Invoice.InvoiceList()) form.ShowDialog();
+        }
+
+        private void trackerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var form = new Apps.Tracing.Tracer()) form.ShowDialog();
         }
     }
 }

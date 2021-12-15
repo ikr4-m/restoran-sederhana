@@ -51,8 +51,7 @@
             this.manajemenUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manajemenMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kasirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.waiterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.kokiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.trackerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.laporanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.riwayatTransaksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -160,8 +159,7 @@
             this.fileToolStripMenuItem,
             this.adminToolStripMenuItem,
             this.kasirToolStripMenuItem,
-            this.waiterToolStripMenuItem,
-            this.kokiToolStripMenuItem,
+            this.trackerToolStripMenuItem,
             this.laporanToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -211,14 +209,14 @@
             // manajemenUserToolStripMenuItem
             // 
             this.manajemenUserToolStripMenuItem.Name = "manajemenUserToolStripMenuItem";
-            this.manajemenUserToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.manajemenUserToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.manajemenUserToolStripMenuItem.Text = "Manajemen &User";
             this.manajemenUserToolStripMenuItem.Click += new System.EventHandler(this.manajemenUserToolStripMenuItem_Click);
             // 
             // manajemenMenuToolStripMenuItem
             // 
             this.manajemenMenuToolStripMenuItem.Name = "manajemenMenuToolStripMenuItem";
-            this.manajemenMenuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.manajemenMenuToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.manajemenMenuToolStripMenuItem.Text = "Manajemen &Menu";
             this.manajemenMenuToolStripMenuItem.Click += new System.EventHandler(this.manajemenMenuToolStripMenuItem_Click);
             // 
@@ -230,19 +228,13 @@
             this.kasirToolStripMenuItem.Visible = false;
             this.kasirToolStripMenuItem.Click += new System.EventHandler(this.kasirToolStripMenuItem_Click);
             // 
-            // waiterToolStripMenuItem
+            // trackerToolStripMenuItem
             // 
-            this.waiterToolStripMenuItem.Name = "waiterToolStripMenuItem";
-            this.waiterToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
-            this.waiterToolStripMenuItem.Text = "&Waiter";
-            this.waiterToolStripMenuItem.Visible = false;
-            // 
-            // kokiToolStripMenuItem
-            // 
-            this.kokiToolStripMenuItem.Name = "kokiToolStripMenuItem";
-            this.kokiToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
-            this.kokiToolStripMenuItem.Text = "&Koki";
-            this.kokiToolStripMenuItem.Visible = false;
+            this.trackerToolStripMenuItem.Name = "trackerToolStripMenuItem";
+            this.trackerToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.trackerToolStripMenuItem.Text = "&Tracker";
+            this.trackerToolStripMenuItem.Visible = false;
+            this.trackerToolStripMenuItem.Click += new System.EventHandler(this.trackerToolStripMenuItem_Click);
             // 
             // laporanToolStripMenuItem
             // 
@@ -261,6 +253,7 @@
             this.riwayatTransaksiToolStripMenuItem.Name = "riwayatTransaksiToolStripMenuItem";
             this.riwayatTransaksiToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.riwayatTransaksiToolStripMenuItem.Text = "&Riwayat Transaksi";
+            this.riwayatTransaksiToolStripMenuItem.Click += new System.EventHandler(this.riwayatTransaksiToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -329,8 +322,7 @@
         private System.Windows.Forms.ToolStripMenuItem manajemenUserToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manajemenMenuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kasirToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem waiterToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem kokiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem trackerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem laporanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem riwayatTransaksiToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
