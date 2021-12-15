@@ -50,6 +50,7 @@
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.InvoiceIDTxt = new MetroFramework.Controls.MetroTextBox();
             this.SyncBtn = new MetroFramework.Controls.MetroButton();
+            this.ChangeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.OrderDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TableNumberTxt)).BeginInit();
@@ -332,11 +333,23 @@
             this.SyncBtn.UseSelectable = true;
             this.SyncBtn.Click += new System.EventHandler(this.SyncBtn_Click);
             // 
+            // ChangeLabel
+            // 
+            this.ChangeLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ChangeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChangeLabel.Location = new System.Drawing.Point(163, 281);
+            this.ChangeLabel.Name = "ChangeLabel";
+            this.ChangeLabel.Size = new System.Drawing.Size(380, 119);
+            this.ChangeLabel.TabIndex = 16;
+            this.ChangeLabel.Text = "Kembalian:\r\nRp0";
+            this.ChangeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 604);
+            this.Controls.Add(this.ChangeLabel);
             this.Controls.Add(this.SyncBtn);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.InvoiceIDTxt);
@@ -388,5 +401,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NamaMenuDisplay;
         private System.Windows.Forms.DataGridViewTextBoxColumn HargaMenu;
         private MetroFramework.Controls.MetroButton SyncBtn;
+        private System.Windows.Forms.Label ChangeLabel;
     }
 }

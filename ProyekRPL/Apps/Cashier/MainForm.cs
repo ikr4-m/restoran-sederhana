@@ -13,7 +13,8 @@ namespace ProyekRPL.Apps.Cashier
         [DllImport("user32.dll")]
         public static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vlc);
 
-        private int GrandTotalPrice = 0;
+        public static int GrandTotalPrice = 0;
+        public static int PayPrice = 0;
 
         public MainForm()
         {
@@ -91,14 +92,14 @@ namespace ProyekRPL.Apps.Cashier
                 GrandTotalPrice += priceTotal;
             }
 
-            PriceLabel.Text = string.Format(GlobalState.CultureInfo, "{0:C}", GrandTotalPrice);
-            PriceLabel.Text = PriceLabel.Text.ToString().Remove(PriceLabel.Text.Length - 3);
+            PriceLabel.Text = string.Format(GlobalState.CultureInfo, "{0:C0}", GrandTotalPrice);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             this.RefreshMenuData();
             this.CustomerNameTxt.Focus();
+            this.ChangeLabel.Visible = false;
         }
 
         private void MenuSearchTxt_KeyDown(object sender, KeyEventArgs e)
@@ -156,7 +157,25 @@ namespace ProyekRPL.Apps.Cashier
 
         private void BuyBtn_Click(object sender, EventArgs e)
         {
-            //
+            if (OrderDataGrid.Rows.Count == 0)
+            {
+                MessageBox.Show("Anda belum memesan satupun!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            using (var form = new Transaction()) form.ShowDialog();
+
+            PayPrice = Transaction.PayPrice;
+
+            if (PayPrice > 0)
+            {
+                string change = string.Format(GlobalState.CultureInfo, "{0:C0}", (PayPrice - GrandTotalPrice));
+                ChangeLabel.Text = "Kembalian:\n" + change;
+                ChangeLabel.Visible = true;
+                BuyBtn.Enabled = false;
+                PrintBtn.Enabled = true;
+                InvoiceIDTxt.Text = Transaction.InvoiceID.ToString();
+            }
         }
 
         private void PrintBtn_Click(object sender, EventArgs e)
@@ -168,6 +187,12 @@ namespace ProyekRPL.Apps.Cashier
         {
             this.OrderDataGrid.Rows.Clear();
             PriceLabel.Text = "Rp0";
+
+            ChangeLabel.Text = "Kembalian:\nRp0";
+            ChangeLabel.Visible = false;
+            BuyBtn.Enabled = true;
+            PrintBtn.Enabled = false;
+            InvoiceIDTxt.Text = "";
 
             this.CustomerNameTxt.Clear();
             this.CustomerNameTxt.Focus();
