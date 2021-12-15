@@ -177,25 +177,25 @@
             this.keluarToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
+            this.fileToolStripMenuItem.Text = "&File";
             // 
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.loginToolStripMenuItem.Text = "Login";
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loginToolStripMenuItem.Text = "&Login";
             this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(104, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // keluarToolStripMenuItem
             // 
             this.keluarToolStripMenuItem.Name = "keluarToolStripMenuItem";
-            this.keluarToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.keluarToolStripMenuItem.Text = "Keluar";
+            this.keluarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.keluarToolStripMenuItem.Text = "&Keluar";
             this.keluarToolStripMenuItem.Click += new System.EventHandler(this.keluarToolStripMenuItem_Click);
             // 
             // adminToolStripMenuItem
@@ -205,28 +205,28 @@
             this.manajemenMenuToolStripMenuItem});
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
             this.adminToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
-            this.adminToolStripMenuItem.Text = "Admin";
+            this.adminToolStripMenuItem.Text = "&Admin";
             this.adminToolStripMenuItem.Visible = false;
             // 
             // manajemenUserToolStripMenuItem
             // 
             this.manajemenUserToolStripMenuItem.Name = "manajemenUserToolStripMenuItem";
-            this.manajemenUserToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.manajemenUserToolStripMenuItem.Text = "Manajemen User";
+            this.manajemenUserToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.manajemenUserToolStripMenuItem.Text = "Manajemen &User";
             this.manajemenUserToolStripMenuItem.Click += new System.EventHandler(this.manajemenUserToolStripMenuItem_Click);
             // 
             // manajemenMenuToolStripMenuItem
             // 
             this.manajemenMenuToolStripMenuItem.Name = "manajemenMenuToolStripMenuItem";
-            this.manajemenMenuToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.manajemenMenuToolStripMenuItem.Text = "Manajemen Menu";
+            this.manajemenMenuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.manajemenMenuToolStripMenuItem.Text = "Manajemen &Menu";
             this.manajemenMenuToolStripMenuItem.Click += new System.EventHandler(this.manajemenMenuToolStripMenuItem_Click);
             // 
             // kasirToolStripMenuItem
             // 
             this.kasirToolStripMenuItem.Name = "kasirToolStripMenuItem";
             this.kasirToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.kasirToolStripMenuItem.Text = "Kasir";
+            this.kasirToolStripMenuItem.Text = "&Kasir";
             this.kasirToolStripMenuItem.Visible = false;
             this.kasirToolStripMenuItem.Click += new System.EventHandler(this.kasirToolStripMenuItem_Click);
             // 
@@ -234,14 +234,14 @@
             // 
             this.waiterToolStripMenuItem.Name = "waiterToolStripMenuItem";
             this.waiterToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
-            this.waiterToolStripMenuItem.Text = "Waiter";
+            this.waiterToolStripMenuItem.Text = "&Waiter";
             this.waiterToolStripMenuItem.Visible = false;
             // 
             // kokiToolStripMenuItem
             // 
             this.kokiToolStripMenuItem.Name = "kokiToolStripMenuItem";
             this.kokiToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
-            this.kokiToolStripMenuItem.Text = "Koki";
+            this.kokiToolStripMenuItem.Text = "&Koki";
             this.kokiToolStripMenuItem.Visible = false;
             // 
             // laporanToolStripMenuItem
@@ -253,14 +253,14 @@
             this.cetakRingkasanLaporanToolStripMenuItem});
             this.laporanToolStripMenuItem.Name = "laporanToolStripMenuItem";
             this.laporanToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
-            this.laporanToolStripMenuItem.Text = "Laporan";
+            this.laporanToolStripMenuItem.Text = "&Laporan";
             this.laporanToolStripMenuItem.Visible = false;
             // 
             // riwayatTransaksiToolStripMenuItem
             // 
             this.riwayatTransaksiToolStripMenuItem.Name = "riwayatTransaksiToolStripMenuItem";
             this.riwayatTransaksiToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.riwayatTransaksiToolStripMenuItem.Text = "Riwayat Transaksi";
+            this.riwayatTransaksiToolStripMenuItem.Text = "&Riwayat Transaksi";
             // 
             // toolStripSeparator2
             // 
@@ -271,13 +271,13 @@
             // 
             this.cetakTotalTransaksiToolStripMenuItem.Name = "cetakTotalTransaksiToolStripMenuItem";
             this.cetakTotalTransaksiToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.cetakTotalTransaksiToolStripMenuItem.Text = "Cetak Total Transaksi";
+            this.cetakTotalTransaksiToolStripMenuItem.Text = "Cetak Total &Transaksi";
             // 
             // cetakRingkasanLaporanToolStripMenuItem
             // 
             this.cetakRingkasanLaporanToolStripMenuItem.Name = "cetakRingkasanLaporanToolStripMenuItem";
             this.cetakRingkasanLaporanToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.cetakRingkasanLaporanToolStripMenuItem.Text = "Cetak Ringkasan Laporan";
+            this.cetakRingkasanLaporanToolStripMenuItem.Text = "Cetak Ringkasan &Laporan";
             // 
             // MainForm
             // 

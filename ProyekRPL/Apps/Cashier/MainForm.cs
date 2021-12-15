@@ -13,6 +13,8 @@ namespace ProyekRPL.Apps.Cashier
         [DllImport("user32.dll")]
         public static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vlc);
 
+        private int GrandTotalPrice = 0;
+
         public MainForm()
         {
             InitializeComponent();
@@ -75,6 +77,24 @@ namespace ProyekRPL.Apps.Cashier
             this.MenuInsertDatagrid(SQL.GetDataQuery("SELECT id, nama_menu, harga FROM menu"));
         }
 
+        private void UpdatePrice()
+        {
+            GrandTotalPrice = 0;
+
+            foreach (DataGridViewRow row in OrderDataGrid.Rows)
+            {
+                // Step 1: Loop semua data di tabel, cocokkan qty dan total
+                int priceTotal = int.Parse(row.Cells[2].Value.ToString()) * int.Parse(row.Cells[3].Value.ToString());
+                row.Cells[4].Value = priceTotal;
+
+                // Step 2: Masukin ke grand total
+                GrandTotalPrice += priceTotal;
+            }
+
+            PriceLabel.Text = string.Format(GlobalState.CultureInfo, "{0:C}", GrandTotalPrice);
+            PriceLabel.Text = PriceLabel.Text.ToString().Remove(PriceLabel.Text.Length - 3);
+        }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             this.RefreshMenuData();
@@ -85,20 +105,19 @@ namespace ProyekRPL.Apps.Cashier
         {
             if (e.KeyCode != Keys.Enter) return;
             string query = MenuSearchTxt.Text;
-            query = string.Format("SELECT * FROM menu WHERE id LIKE '%{0}%' OR nama_menu LIKE '%{0}%'", query);
+            query = string.Format("SELECT id, nama_menu, harga FROM menu WHERE id LIKE '%{0}%' OR nama_menu LIKE '%{0}%'", query);
             this.MenuInsertDatagrid(SQL.GetDataQuery(query));
 
             MenuSearchTxt.Text = "";
             MenuDataGrid.Focus();
         }
 
-        private void MenuDataGrid_KeyPress(object sender, KeyPressEventArgs e)
+        private void MenuDataGrid_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyChar != (char)Keys.Enter) return;
+            if (e.KeyCode != Keys.Enter) return;
             List<string> list = new List<string>();
-            for (int i = 0; i < 3; i++) list.Add(DataGridHelper.GetValueSelectedRow(MenuDataGrid, i, 1));
+            for (int i = 0; i < 3; i++) list.Add(DataGridHelper.GetValueSelectedRow(MenuDataGrid, i));
             var data = list.ToArray();
-
             int rowNum = DataGridHelper.IsIncludeCell(OrderDataGrid, 0, data[0]);
 
             if (rowNum < 0)
@@ -111,12 +130,28 @@ namespace ProyekRPL.Apps.Cashier
                 OrderDataGrid.Rows[rowNum].Cells[3].Value = qty.ToString();
             }
 
+            this.UpdatePrice();
             this.RefreshMenuData();
+            OrderDataGrid.Focus();
         }
 
         private void MenuDataGrid_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             SendKeys.SendWait("{ENTER}");
+        }
+
+        private void OrderDataGrid_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Back || e.KeyCode == Keys.Delete)
+                OrderDataGrid.Rows.RemoveAt(OrderDataGrid.SelectedCells[0].RowIndex);
+
+            this.UpdatePrice();
+        }
+
+        private void SyncBtn_Click(object sender, EventArgs e)
+        {
+            this.UpdatePrice();
+            OrderDataGrid.Focus();
         }
 
         private void BuyBtn_Click(object sender, EventArgs e)
@@ -132,6 +167,8 @@ namespace ProyekRPL.Apps.Cashier
         private void ResetBtn_Click(object sender, EventArgs e)
         {
             this.OrderDataGrid.Rows.Clear();
+            PriceLabel.Text = "Rp0";
+
             this.CustomerNameTxt.Clear();
             this.CustomerNameTxt.Focus();
         }

@@ -49,6 +49,7 @@
             this.TableNumberTxt = new System.Windows.Forms.NumericUpDown();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.InvoiceIDTxt = new MetroFramework.Controls.MetroTextBox();
+            this.SyncBtn = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.OrderDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TableNumberTxt)).BeginInit();
@@ -72,6 +73,7 @@
             this.OrderDataGrid.Name = "OrderDataGrid";
             this.OrderDataGrid.Size = new System.Drawing.Size(694, 450);
             this.OrderDataGrid.TabIndex = 1;
+            this.OrderDataGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OrderDataGrid_KeyDown);
             // 
             // IDOrder
             // 
@@ -119,7 +121,7 @@
             this.MenuDataGrid.Name = "MenuDataGrid";
             this.MenuDataGrid.Size = new System.Drawing.Size(243, 418);
             this.MenuDataGrid.TabIndex = 2;
-            this.MenuDataGrid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MenuDataGrid_KeyPress);
+            this.MenuDataGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MenuDataGrid_KeyDown);
             this.MenuDataGrid.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.MenuDataGrid_MouseDoubleClick);
             // 
             // IDMenu
@@ -184,7 +186,7 @@
             this.PriceLabel.Name = "PriceLabel";
             this.PriceLabel.Size = new System.Drawing.Size(246, 74);
             this.PriceLabel.TabIndex = 4;
-            this.PriceLabel.Text = "0";
+            this.PriceLabel.Text = "Rp0";
             this.PriceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // BuyBtn
@@ -320,11 +322,22 @@
             this.InvoiceIDTxt.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.InvoiceIDTxt.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
+            // SyncBtn
+            // 
+            this.SyncBtn.Location = new System.Drawing.Point(636, 63);
+            this.SyncBtn.Name = "SyncBtn";
+            this.SyncBtn.Size = new System.Drawing.Size(80, 55);
+            this.SyncBtn.TabIndex = 15;
+            this.SyncBtn.Text = "Sync (F10)";
+            this.SyncBtn.UseSelectable = true;
+            this.SyncBtn.Click += new System.EventHandler(this.SyncBtn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 604);
+            this.Controls.Add(this.SyncBtn);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.InvoiceIDTxt);
             this.Controls.Add(this.TableNumberTxt);
@@ -374,5 +387,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IDMenu;
         private System.Windows.Forms.DataGridViewTextBoxColumn NamaMenuDisplay;
         private System.Windows.Forms.DataGridViewTextBoxColumn HargaMenu;
+        private MetroFramework.Controls.MetroButton SyncBtn;
     }
 }

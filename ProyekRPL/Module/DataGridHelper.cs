@@ -5,9 +5,9 @@ namespace ProyekRPL.Module
 {
     class DataGridHelper
     {
-        public static string GetValueSelectedRow(DataGridView grid, int cellRow, int reduceRow = 0)
+        public static string GetValueSelectedRow(DataGridView grid, int cellRow)
         {
-            var index = grid.SelectedCells[0].RowIndex - reduceRow;
+            var index = grid.SelectedCells[0].RowIndex;
             var data = grid.Rows[index].Cells[cellRow];
             if (data.Value != null) return data.Value.ToString();
             else return null;
