@@ -71,9 +71,16 @@ namespace ProyekRPL.Apps.Admin
             for (int i = 0; i < data.Count; i++)
                 SelectedEditRows.Add(UserDataGrid.Columns[data[i].ColumnIndex].Name, DataGridHelper.GetValueSelectedRow(UserDataGrid, i));
 
-            using (ModifyUser form = new ModifyUser()) form.ShowDialog();
-            ModifyUserMode = EModifyUserMode.None;
-            this.RefreshUserData();
+            if (GlobalState.ThatUserLogin.ID.ToString() == SelectedEditRows["ID"].ToString())
+            {
+                using (ModifyUser form = new ModifyUser()) form.ShowDialog();
+                ModifyUserMode = EModifyUserMode.None;
+                this.RefreshUserData();
+            }
+            else
+            {
+                MessageBox.Show("Anda tidak bisa mengubah akun superadmin!", "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void UserDeleteData_Click(object sender, EventArgs e)

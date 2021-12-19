@@ -13,7 +13,6 @@ namespace ProyekRPL.Module
         {
             Connection = new MySqlConnection(GenerateStringConnection());
             Connection.Open();
-            Connection.Close();
         }
 
         public static string GenerateStringConnection()
@@ -29,8 +28,6 @@ namespace ProyekRPL.Module
 
         public static string[][] GetDataQuery(string query)
         {
-            Connection.Open();
-
             List<string[]> list = new List<string[]>();
             MySqlCommand cmd = new MySqlCommand(query, Connection);
 
@@ -42,15 +39,11 @@ namespace ProyekRPL.Module
                     list.Add(data);
                 }
 
-            Connection.Close();
-
             return list.ToArray();
         }
 
         public static bool PreparedStatementQuery(string query, string[][] args)
         {
-            Connection.Open();
-
             MySqlCommand cmd = new MySqlCommand(query, Connection);
             foreach (string[] arg in args)
                 cmd.Parameters.AddWithValue(arg[0], arg[1]);
@@ -62,14 +55,10 @@ namespace ProyekRPL.Module
 
         public static MySqlCommand NonReturnQuery(string query)
         {
-            Connection.Open();
-
             MySqlCommand command = new MySqlCommand(query, Connection);
             command.CommandText = query;
 
             command.ExecuteNonQuery();
-            Connection.Close();
-
             return command;
         }
     }

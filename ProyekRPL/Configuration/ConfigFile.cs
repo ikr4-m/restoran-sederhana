@@ -43,6 +43,8 @@ namespace ProyekRPL.Initialize
         {
             Module.IniFile ini = new Module.IniFile(_configFile[1]);
             ini.Write("RestaurantName", "Restoran Mundur Terus", "General");
+            ini.Write("Address", "Jl. Mana Aja Boleh", "General");
+            ini.Write("PhoneNumber", "0411-454454454", "General");
         }
     }
 }

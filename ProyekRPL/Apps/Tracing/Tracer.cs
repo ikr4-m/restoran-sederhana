@@ -47,14 +47,40 @@ namespace ProyekRPL.Apps.Tracing
         private void OrderInsertDatagrid(string[][] data)
         {
             List<string> arr = new List<string>();
-            foreach (string[] s in data)
+            
+            // Apabila datagrid kosong
+            if (OrderDataGrid.Rows.Count == 0)
             {
-                // Karena ini ticking tiap detik, maka tidak ada yang namanya clearing data
-                if (DataGridHelper.IsIncludeCell(OrderDataGrid, 0, s[0]) < 0)
+                foreach (string[] row in data)
                 {
-                    foreach (string s2 in s) arr.Add(s2);
+                    foreach (string s in row) arr.Add(s);
                     OrderDataGrid.Rows.Add(arr.ToArray());
-                    arr = new List<string>();
+                }
+            }
+            else
+            {
+                // Data terhapus
+                if (OrderDataGrid.Rows.Count > data.Length)
+                {
+                    int diff = OrderDataGrid.Rows.Count - data.Length;
+                    for (int i = 0; i < diff; i++)
+                        OrderDataGrid.Rows.RemoveAt(OrderDataGrid.Rows.Count - 1);
+                }
+
+                // Data bertambah
+                if (OrderDataGrid.Rows.Count < data.Length)
+                {
+                    // Tambah data dummy
+                    string[] dummyData = data[data.Length - 1];
+                    for (int i = 0; i < data.Length; i++) arr.Add(dummyData[i]);
+                    OrderDataGrid.Rows.Add(arr.ToArray());
+                }
+
+                // Update data dalam tabel
+                for (int i = 0; i < data.Length; i++)
+                {
+                    for (int j = 0; j < data[i].Length; j++)
+                        OrderDataGrid.Rows[i].Cells[j].Value = data[i][j];
                 }
             }
         }
@@ -142,7 +168,7 @@ namespace ProyekRPL.Apps.Tracing
             SQL.NonReturnQuery(query);
 
             MessageBox.Show(string.Format("Status pesanan diubah menjadi \"{0}\"", status), "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            OrderDataGrid.Rows.Clear();
+            this.RefreshOrderData();
         }
     }
 }
