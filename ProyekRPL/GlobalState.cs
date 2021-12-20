@@ -17,7 +17,7 @@ namespace ProyekRPL
         /// <summary>
         /// Invoice ID untuk dicetak
         /// </summary>
-        public static uint InvoiceID = 0;
+        public static uint InvoiceID = 1;
         
         public enum UserRole
         {

@@ -17,9 +17,14 @@ namespace ProyekRPL.Apps.Report.Invoice
             RestaurantIdentity.Name = ini.Read("RestaurantName", "General");
             RestaurantIdentity.Address = ini.Read("Address", "General");
             RestaurantIdentity.PhoneNumber = ini.Read("PhoneNumber", "General");
+
+            string query = string.Format("SELECT * FROM v_receipt WHERE pesananID='{0}'", GlobalState.InvoiceID);
+            this._data = SQL.GetDataQuery(query);
         }
 
         private readonly int _widthGraph = 40;
+
+        private readonly string[][] _data;
 
         private class RestaurantIdentity
         {
@@ -38,20 +43,9 @@ namespace ProyekRPL.Apps.Report.Invoice
             return new string(' ', CenterTextPosition(text)) + text;
         }
 
-        private enum StringPaddingDirection { Left, Right }
-        private string StringPadding(string text, int length, StringPaddingDirection direction)
+        private string LimitString(string text, int length)
         {
-            int diff = text.Length - length;
-            switch (direction)
-            {
-                case StringPaddingDirection.Left:
-                    text = new string(' ', diff) + text;
-                    break;
-                case StringPaddingDirection.Right:
-                    text += new string(' ', diff);
-                    break;
-            }
-            return text;
+            return text.Length > length ? text.Substring(0, length) : text;
         }
 
         private string[] SplitMaxString(string text)
@@ -106,14 +100,37 @@ namespace ProyekRPL.Apps.Report.Invoice
             startY -= offset * 2;
 
             // Header
-            DrawString(new string('-', this._widthGraph));
-            DrawString(RestaurantIdentity.Name, true);
-            DrawString(RestaurantIdentity.Address, true);
-            DrawString("Telp. " + RestaurantIdentity.PhoneNumber, true);
-            DrawString(new string('-', this._widthGraph));
+            DrawString(RestaurantIdentity.Name);
+            DrawString(RestaurantIdentity.Address);
+            DrawString("Telp. " + RestaurantIdentity.PhoneNumber);
 
             // Detail
+            startY += offset;
+            DateTime dateInvoice = DateTime.Parse(_data[0][5]);
+            DrawString(string.Format("No.  : {0}", this._data[0][1]).PadRight(30, ' ') + dateInvoice.ToString("yyyy-MM-dd"));
+            DrawString(string.Format("Kasir: {0}", this._data[0][2]).PadRight(32, ' ') + dateInvoice.ToString("HH:mm:ss"));
+            DrawString("Nama Pelanggan: " + this._data[0][3]);
+            DrawString(new string('-', this._widthGraph));
 
+            // Isi barang
+            int total = 0, qty = 0;
+            for (int i = 0; i < _data.Length; i++)
+            {
+                DrawString(
+                    string.Format("{0} {1}", ((i+1).ToString() + ".").PadRight(4, ' '), LimitString(this._data[i][7], 36).ToUpper())
+                );
+
+                total += int.Parse(this._data[i][8]);
+                qty += int.Parse(this._data[i][9]);
+            }
+            DrawString(new string('-', this._widthGraph));
+
+            // Result
+
+            // Footer
+            startY += offset * 2;
+            DrawString("Terima Kasih", true);
+            DrawString("Selamat Menikmati", true);
         }
     }
 }
