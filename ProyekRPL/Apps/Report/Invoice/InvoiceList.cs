@@ -18,6 +18,7 @@ namespace ProyekRPL.Apps.Report.Invoice
             public static uint ID = 0;
             public static string Name = "";
             public static string Timestamp = "";
+            public static string InvoiceID = "";
         }
 
         private void OrderInsertDatagrid(string[][] data)
@@ -35,7 +36,7 @@ namespace ProyekRPL.Apps.Report.Invoice
         private void RefreshOrderData()
         {
             this.OrderInsertDatagrid(
-                SQL.GetDataQuery("SELECT id, tanggal_pemesan, nama_pemesan, nomor_meja FROM pesanan ORDER BY id DESC"));
+                SQL.GetDataQuery("SELECT id, CONCAT(LPAD(id, 5, '0'), '/KSR/', YEAR(tanggal_pemesan)) as invoiceID, tanggal_pemesan, nama_pemesan FROM pesanan ORDER BY id DESC"));
         }
 
         private void InvoiceList_Load(object sender, EventArgs e)
@@ -56,14 +57,16 @@ namespace ProyekRPL.Apps.Report.Invoice
         private void ViewOrderBtn_Click(object sender, EventArgs e)
         {
             PeekID.ID = uint.Parse(DataGridHelper.GetValueSelectedRow(OrderDataGrid, 0));
-            PeekID.Name = DataGridHelper.GetValueSelectedRow(OrderDataGrid, 2);
-            PeekID.Timestamp = DataGridHelper.GetValueSelectedRow(OrderDataGrid, 1);
+            PeekID.Name = DataGridHelper.GetValueSelectedRow(OrderDataGrid, 3);
+            PeekID.Timestamp = DataGridHelper.GetValueSelectedRow(OrderDataGrid, 2);
+            PeekID.InvoiceID = DataGridHelper.GetValueSelectedRow(OrderDataGrid, 1);
 
             using (var form = new PeekInvoice()) form.ShowDialog();
 
             PeekID.ID = 0;
             PeekID.Name = "";
             PeekID.Timestamp = "";
+            PeekID.InvoiceID = "";
         }
     }
 }

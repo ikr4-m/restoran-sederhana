@@ -32,13 +32,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.OrderDataGrid = new MetroFramework.Controls.MetroGrid();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NamaPemesan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomorMeja = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ViewOrderBtn = new MetroFramework.Controls.MetroButton();
             this.PrintBtn = new MetroFramework.Controls.MetroButton();
             this.RefreshBtn = new MetroFramework.Controls.MetroButton();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvoiceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NamaPemesan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.OrderDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,9 +62,9 @@
             this.OrderDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.OrderDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
+            this.InvoiceID,
             this.Timestamp,
-            this.NamaPemesan,
-            this.NomorMeja});
+            this.NamaPemesan});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -78,6 +78,7 @@
             this.OrderDataGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.OrderDataGrid.Location = new System.Drawing.Point(23, 63);
             this.OrderDataGrid.Name = "OrderDataGrid";
+            this.OrderDataGrid.ReadOnly = true;
             this.OrderDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
@@ -92,32 +93,6 @@
             this.OrderDataGrid.Size = new System.Drawing.Size(501, 317);
             this.OrderDataGrid.TabIndex = 0;
             this.OrderDataGrid.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.OrderDataGrid_MouseDoubleClick);
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 50;
-            // 
-            // Timestamp
-            // 
-            this.Timestamp.HeaderText = "Timestamp";
-            this.Timestamp.Name = "Timestamp";
-            this.Timestamp.ReadOnly = true;
-            // 
-            // NamaPemesan
-            // 
-            this.NamaPemesan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NamaPemesan.HeaderText = "Nama Pemesan";
-            this.NamaPemesan.Name = "NamaPemesan";
-            this.NamaPemesan.ReadOnly = true;
-            // 
-            // NomorMeja
-            // 
-            this.NomorMeja.HeaderText = "No. Meja";
-            this.NomorMeja.Name = "NomorMeja";
-            this.NomorMeja.ReadOnly = true;
             // 
             // ViewOrderBtn
             // 
@@ -148,6 +123,34 @@
             this.RefreshBtn.UseSelectable = true;
             this.RefreshBtn.Click += new System.EventHandler(this.RefreshBtn_Click);
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            this.ID.Width = 50;
+            // 
+            // InvoiceID
+            // 
+            this.InvoiceID.HeaderText = "InvoiceID";
+            this.InvoiceID.Name = "InvoiceID";
+            this.InvoiceID.ReadOnly = true;
+            // 
+            // Timestamp
+            // 
+            this.Timestamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Timestamp.HeaderText = "Timestamp";
+            this.Timestamp.Name = "Timestamp";
+            this.Timestamp.ReadOnly = true;
+            // 
+            // NamaPemesan
+            // 
+            this.NamaPemesan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NamaPemesan.HeaderText = "Nama Pemesan";
+            this.NamaPemesan.Name = "NamaPemesan";
+            this.NamaPemesan.ReadOnly = true;
+            // 
             // InvoiceList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -176,8 +179,8 @@
         private MetroFramework.Controls.MetroButton PrintBtn;
         private MetroFramework.Controls.MetroButton RefreshBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InvoiceID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Timestamp;
         private System.Windows.Forms.DataGridViewTextBoxColumn NamaPemesan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NomorMeja;
     }
 }

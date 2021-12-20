@@ -11,6 +11,7 @@ namespace ProyekRPL.Apps.Report.Invoice
         public PrintInvoice()
         {
             InitializeComponent();
+            Initial.ConfigDatabase();
 
             IniFile ini = new IniFile("ApplicationConfig.ini");
             RestaurantIdentity.Name = ini.Read("RestaurantName", "General");
@@ -19,6 +20,7 @@ namespace ProyekRPL.Apps.Report.Invoice
         }
 
         private readonly int _widthGraph = 40;
+
         private class RestaurantIdentity
         {
             public static string Name = "";
@@ -34,6 +36,22 @@ namespace ProyekRPL.Apps.Report.Invoice
         private string EmptyStringCenter(string text)
         {
             return new string(' ', CenterTextPosition(text)) + text;
+        }
+
+        private enum StringPaddingDirection { Left, Right }
+        private string StringPadding(string text, int length, StringPaddingDirection direction)
+        {
+            int diff = text.Length - length;
+            switch (direction)
+            {
+                case StringPaddingDirection.Left:
+                    text = new string(' ', diff) + text;
+                    break;
+                case StringPaddingDirection.Right:
+                    text += new string(' ', diff);
+                    break;
+            }
+            return text;
         }
 
         private string[] SplitMaxString(string text)
@@ -93,6 +111,9 @@ namespace ProyekRPL.Apps.Report.Invoice
             DrawString(RestaurantIdentity.Address, true);
             DrawString("Telp. " + RestaurantIdentity.PhoneNumber, true);
             DrawString(new string('-', this._widthGraph));
+
+            // Detail
+
         }
     }
 }

@@ -39,6 +39,7 @@ namespace ProyekRPL.Apps.Tracing
             public static uint ID = 0;
             public static string Name = "";
             public static string Timestamp = "";
+            public static string InvoiceID = "";
             public static bool Processed = false;
         }
 
@@ -87,7 +88,7 @@ namespace ProyekRPL.Apps.Tracing
 
         private void RefreshOrderData()
         {
-            string query = string.Format("SELECT id, tanggal_pemesan, nama_pemesan, nomor_meja, status_pesanan FROM pesanan WHERE status_pesanan='{0}' ORDER BY id ASC",
+            string query = string.Format("SELECT id, CONCAT(LPAD(id, 5, '0'), '/KSR/', YEAR(tanggal_pemesan)) as invoiceID, tanggal_pemesan, nama_pemesan, nomor_meja, status_pesanan FROM pesanan WHERE status_pesanan='{0}' ORDER BY id ASC",
                 Role == GlobalState.UserRole.Koki ? "Masak' OR status_pesanan='Menunggu" : "Dikirim");
             this.OrderInsertDatagrid(SQL.GetDataQuery(query));
         }
@@ -130,15 +131,16 @@ namespace ProyekRPL.Apps.Tracing
         private void PeekOrderBtn_Click(object sender, EventArgs e)
         {
             PeekID.ID = uint.Parse(DataGridHelper.GetValueSelectedRow(OrderDataGrid, 0));
-            PeekID.Name = DataGridHelper.GetValueSelectedRow(OrderDataGrid, 2);
-            PeekID.Timestamp = DataGridHelper.GetValueSelectedRow(OrderDataGrid, 1);
+            PeekID.Name = DataGridHelper.GetValueSelectedRow(OrderDataGrid, 3);
+            PeekID.Timestamp = DataGridHelper.GetValueSelectedRow(OrderDataGrid, 2);
+            PeekID.InvoiceID = DataGridHelper.GetValueSelectedRow(OrderDataGrid, 1);
 
             using (var form = new TracerPeeker()) form.ShowDialog();
 
             PeekID.ID = 0;
             PeekID.Name = "";
             PeekID.Timestamp = "";
-            PeekID.Processed = false;
+            PeekID.InvoiceID = "";
         }
 
         private void OrderDataGrid_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -148,7 +150,7 @@ namespace ProyekRPL.Apps.Tracing
 
         private void ProcessBtn_Click(object sender, EventArgs e)
         {
-            string status = DataGridHelper.GetValueSelectedRow(OrderDataGrid, 4);
+            string status = DataGridHelper.GetValueSelectedRow(OrderDataGrid, 5);
             uint id = uint.Parse(DataGridHelper.GetValueSelectedRow(OrderDataGrid, 0));
 
             // Ganti status

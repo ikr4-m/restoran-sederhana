@@ -41,7 +41,7 @@ namespace ProyekRPL.Apps.Report.Invoice
             this.OrderInsertDatagrid(SQL.GetDataQuery(query));
 
             this.Text = string.Format("Invoice ID: ({0}) {1} / {2}",
-                InvoiceList.PeekID.ID,
+                InvoiceList.PeekID.InvoiceID,
                 InvoiceList.PeekID.Name,
                 InvoiceList.PeekID.Timestamp);
 

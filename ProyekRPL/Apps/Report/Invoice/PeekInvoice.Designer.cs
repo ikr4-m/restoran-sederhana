@@ -41,6 +41,8 @@
             // 
             // OrderDataGrid
             // 
+            this.OrderDataGrid.AllowUserToAddRows = false;
+            this.OrderDataGrid.AllowUserToDeleteRows = false;
             this.OrderDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.OrderDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -51,6 +53,7 @@
             this.Total});
             this.OrderDataGrid.Location = new System.Drawing.Point(12, 12);
             this.OrderDataGrid.Name = "OrderDataGrid";
+            this.OrderDataGrid.ReadOnly = true;
             this.OrderDataGrid.Size = new System.Drawing.Size(707, 270);
             this.OrderDataGrid.TabIndex = 0;
             // 
