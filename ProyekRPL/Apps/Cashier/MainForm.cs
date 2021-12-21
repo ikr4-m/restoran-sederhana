@@ -100,7 +100,6 @@ namespace ProyekRPL.Apps.Cashier
             this.RefreshMenuData();
             this.CustomerNameTxt.Focus();
             this.ChangeLabel.Visible = false;
-            GlobalState.InvoiceID = 0;
         }
 
         private void MenuSearchTxt_KeyDown(object sender, KeyEventArgs e)
@@ -197,7 +196,6 @@ namespace ProyekRPL.Apps.Cashier
                 BuyBtn.Enabled = false;
                 PrintBtn.Enabled = true;
                 InvoiceIDTxt.Text = Transaction.InvoiceID.ToString();
-                GlobalState.InvoiceID = (uint)lastID;
             }
         }
 
@@ -216,7 +214,6 @@ namespace ProyekRPL.Apps.Cashier
             BuyBtn.Enabled = true;
             PrintBtn.Enabled = false;
             InvoiceIDTxt.Text = "";
-            GlobalState.InvoiceID = 0;
 
             this.CustomerNameTxt.Clear();
             this.CustomerNameTxt.Focus();

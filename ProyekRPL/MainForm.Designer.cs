@@ -56,7 +56,6 @@
             this.riwayatTransaksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.cetakTotalTransaksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cetakRingkasanLaporanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -180,19 +179,19 @@
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.loginToolStripMenuItem.Text = "&Login";
             this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(104, 6);
             // 
             // keluarToolStripMenuItem
             // 
             this.keluarToolStripMenuItem.Name = "keluarToolStripMenuItem";
-            this.keluarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.keluarToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.keluarToolStripMenuItem.Text = "&Keluar";
             this.keluarToolStripMenuItem.Click += new System.EventHandler(this.keluarToolStripMenuItem_Click);
             // 
@@ -241,8 +240,7 @@
             this.laporanToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.riwayatTransaksiToolStripMenuItem,
             this.toolStripSeparator2,
-            this.cetakTotalTransaksiToolStripMenuItem,
-            this.cetakRingkasanLaporanToolStripMenuItem});
+            this.cetakTotalTransaksiToolStripMenuItem});
             this.laporanToolStripMenuItem.Name = "laporanToolStripMenuItem";
             this.laporanToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.laporanToolStripMenuItem.Text = "&Laporan";
@@ -251,26 +249,20 @@
             // riwayatTransaksiToolStripMenuItem
             // 
             this.riwayatTransaksiToolStripMenuItem.Name = "riwayatTransaksiToolStripMenuItem";
-            this.riwayatTransaksiToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.riwayatTransaksiToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.riwayatTransaksiToolStripMenuItem.Text = "&Riwayat Transaksi";
             this.riwayatTransaksiToolStripMenuItem.Click += new System.EventHandler(this.riwayatTransaksiToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(204, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(179, 6);
             // 
             // cetakTotalTransaksiToolStripMenuItem
             // 
             this.cetakTotalTransaksiToolStripMenuItem.Name = "cetakTotalTransaksiToolStripMenuItem";
-            this.cetakTotalTransaksiToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.cetakTotalTransaksiToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.cetakTotalTransaksiToolStripMenuItem.Text = "Cetak Total &Transaksi";
-            // 
-            // cetakRingkasanLaporanToolStripMenuItem
-            // 
-            this.cetakRingkasanLaporanToolStripMenuItem.Name = "cetakRingkasanLaporanToolStripMenuItem";
-            this.cetakRingkasanLaporanToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.cetakRingkasanLaporanToolStripMenuItem.Text = "Cetak Ringkasan &Laporan";
             // 
             // MainForm
             // 
@@ -327,6 +319,5 @@
         private System.Windows.Forms.ToolStripMenuItem riwayatTransaksiToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem cetakTotalTransaksiToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cetakRingkasanLaporanToolStripMenuItem;
     }
 }

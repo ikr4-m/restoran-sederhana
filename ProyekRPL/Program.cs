@@ -16,7 +16,7 @@ namespace ProyekRPL
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Apps.Report.Invoice.PrintInvoice());
+            Application.Run(new Apps.Report.Transaction.TransactionList());
         }
     }
 }

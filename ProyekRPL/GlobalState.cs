@@ -13,11 +13,6 @@ namespace ProyekRPL
         /// Globalisasi dari aplikasi
         /// </summary>
         public static CultureInfo CultureInfo = CultureInfo.GetCultureInfo("id-ID");
-
-        /// <summary>
-        /// Invoice ID untuk dicetak
-        /// </summary>
-        public static uint InvoiceID = 1;
         
         public enum UserRole
         {

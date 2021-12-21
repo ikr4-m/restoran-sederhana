@@ -158,6 +158,12 @@
     <Compile Include="Apps\Report\Invoice\PrintInvoice.Designer.cs">
       <DependentUpon>PrintInvoice.cs</DependentUpon>
     </Compile>
+    <Compile Include="Apps\Report\Transaction\TransactionList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apps\Report\Transaction\TransactionList.Designer.cs">
+      <DependentUpon>TransactionList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Apps\Tracing\Tracer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Apps\Report\Invoice\PrintInvoice.resx">
       <DependentUpon>PrintInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apps\Report\Transaction\TransactionList.resx">
+      <DependentUpon>TransactionList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Apps\Tracing\Tracer.resx">
       <DependentUpon>Tracer.cs</DependentUpon>

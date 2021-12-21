@@ -8,23 +8,32 @@ namespace ProyekRPL.Apps.Report.Invoice
 {
     public partial class PrintInvoice : Form
     {
-        public PrintInvoice()
+        public PrintInvoice(PrintInvoiceParam param)
         {
             InitializeComponent();
             Initial.ConfigDatabase();
+            this._param = param;
 
             IniFile ini = new IniFile("ApplicationConfig.ini");
             RestaurantIdentity.Name = ini.Read("RestaurantName", "General");
             RestaurantIdentity.Address = ini.Read("Address", "General");
             RestaurantIdentity.PhoneNumber = ini.Read("PhoneNumber", "General");
 
-            string query = string.Format("SELECT * FROM v_receipt WHERE pesananID='{0}'", GlobalState.InvoiceID);
+            string query = string.Format("SELECT * FROM v_receipt WHERE pesananID='{0}'", this._param.ID);
             this._data = SQL.GetDataQuery(query);
         }
 
         private readonly int _widthGraph = 40;
 
         private readonly string[][] _data;
+
+        private readonly PrintInvoiceParam _param;
+
+        public class PrintInvoiceParam
+        {
+            public uint ID;
+            public int? PayPrice;
+        }
 
         private class RestaurantIdentity
         {
@@ -116,16 +125,46 @@ namespace ProyekRPL.Apps.Report.Invoice
             int total = 0, qty = 0;
             for (int i = 0; i < _data.Length; i++)
             {
+                int money = int.Parse(this._data[i][8]);
+                int qtyItem = int.Parse(this._data[i][9]);
                 DrawString(
-                    string.Format("{0} {1}", ((i+1).ToString() + ".").PadRight(4, ' '), LimitString(this._data[i][7], 36).ToUpper())
+                    string.Format("{0}{1}",
+                    ((i+1).ToString() + ".").PadRight(4, ' '),
+                    LimitString(this._data[i][7], 36).ToUpper())
+                );
+                DrawString(
+                    string.Format("    {0} x {1} = {2}", // (4 + 10 + 3 + 4 + 3) - 40
+                    string.Format("{0:N0}", money).PadRight(10, ' '),
+                    qtyItem.ToString().PadRight(4, ' '),
+                    string.Format("{0:N0}", money * qtyItem).PadLeft(16, ' ')
+                    )
                 );
 
-                total += int.Parse(this._data[i][8]);
-                qty += int.Parse(this._data[i][9]);
+                total += money;
+                qty += qtyItem;
             }
             DrawString(new string('-', this._widthGraph));
 
             // Result
+            int pay = this._param.PayPrice.HasValue ? this._param.PayPrice.Value : total;
+            int diff = pay - total;
+            DrawString(
+                string.Format("{0} {1} {2}", // (12 + 8) - 40
+                "BARIS=" + _data.Length.ToString().PadRight(4, ' '),
+                "QTY=" + qty.ToString().PadRight(5, ' '),
+                string.Format("{0:N0}", total).PadLeft(19, ' '))
+            );
+            DrawString(
+                string.Format("Tunai{0}={1}", // (40/2) -> (20-6) + 20
+                new string(' ', 14),
+                string.Format("{0:N0}", pay).PadLeft(20, ' '))
+            );
+            DrawString(new string(' ', 20) + new string('-', 20));
+            DrawString(
+                string.Format("Kembali{0}={1}", // (40/2) -> (20-8) + 20
+                new string(' ', 12),
+                string.Format("{0:N0}", diff).PadLeft(20, ' '))
+            );
 
             // Footer
             startY += offset * 2;

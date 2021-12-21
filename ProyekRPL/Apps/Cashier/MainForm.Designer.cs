@@ -165,7 +165,6 @@
             this.MenuSearchTxt.MaxLength = 32767;
             this.MenuSearchTxt.Name = "MenuSearchTxt";
             this.MenuSearchTxt.PasswordChar = '\0';
-            this.MenuSearchTxt.PromptText = "Cari Barang (F1)";
             this.MenuSearchTxt.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.MenuSearchTxt.SelectedText = "";
             this.MenuSearchTxt.SelectionLength = 0;
@@ -240,7 +239,6 @@
             this.CustomerNameTxt.MaxLength = 32767;
             this.CustomerNameTxt.Name = "CustomerNameTxt";
             this.CustomerNameTxt.PasswordChar = '\0';
-            this.CustomerNameTxt.PromptText = "(F5)";
             this.CustomerNameTxt.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.CustomerNameTxt.SelectedText = "";
             this.CustomerNameTxt.SelectionLength = 0;

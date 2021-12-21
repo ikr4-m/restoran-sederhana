@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Calibri;
+        }
+
+        table, th, td {
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <h2>Laporan Penjualan<br>Periode: {0}</h2>
+    <table>
+        <tr style="border: 1px solid black; border-style: dotted;">
+            <th>No</th>
+            <th>Timestamp</th>
+            <th>InvoiceID</th>
+            <th>Total Qty</th>
+            <th>Total Amount</th>
+        </tr>
+        {1}
+        <tr style="border: 1px solid black; border-style: dotted;">
+            <td colspan="3"><b>Total</b></td>
+            <td>{2}</td>
+            <td>{3}</td>
+        </tr>
+    </table>
+</body>
+</html>
