@@ -112,6 +112,7 @@
             this.PrintBtn.TabIndex = 6;
             this.PrintBtn.Text = "Cetak";
             this.PrintBtn.UseVisualStyleBackColor = true;
+            this.PrintBtn.Click += new System.EventHandler(this.PrintBtn_Click);
             // 
             // SearchButton
             // 

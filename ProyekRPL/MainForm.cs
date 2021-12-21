@@ -138,5 +138,10 @@ namespace ProyekRPL
         {
             using (var form = new Apps.Tracing.Tracer()) form.ShowDialog();
         }
+
+        private void cetakTotalTransaksiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var form = new Apps.Report.Transaction.TransactionList()) form.ShowDialog();
+        }
     }
 }

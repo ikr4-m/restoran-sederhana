@@ -263,6 +263,7 @@
             this.cetakTotalTransaksiToolStripMenuItem.Name = "cetakTotalTransaksiToolStripMenuItem";
             this.cetakTotalTransaksiToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.cetakTotalTransaksiToolStripMenuItem.Text = "Cetak Total &Transaksi";
+            this.cetakTotalTransaksiToolStripMenuItem.Click += new System.EventHandler(this.cetakTotalTransaksiToolStripMenuItem_Click);
             // 
             // MainForm
             // 
