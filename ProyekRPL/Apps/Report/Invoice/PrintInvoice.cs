@@ -11,7 +11,6 @@ namespace ProyekRPL.Apps.Report.Invoice
         public PrintInvoice(PrintInvoiceParam param)
         {
             InitializeComponent();
-            Initial.ConfigDatabase();
             this._param = param;
 
             IniFile ini = new IniFile("ApplicationConfig.ini");
@@ -33,6 +32,7 @@ namespace ProyekRPL.Apps.Report.Invoice
         {
             public uint ID;
             public int? PayPrice;
+            public string InvoiceID;
         }
 
         private class RestaurantIdentity
@@ -86,27 +86,28 @@ namespace ProyekRPL.Apps.Report.Invoice
             return list.ToArray();
         }
 
-        private void PrintInvoice_Paint(object sender, PaintEventArgs e)
+        private void DrawingReceipt(ref Graphics g, ref int startX, ref int startY, ref int offset)
         {
-            Graphics g = e.Graphics;
-            int startX = 0;
-            int startY = 0;
-            int offset = 10;
-
+            // Inisialisasi ke variabel lokal karena pointer function
+            int x = startX, y = startY, off = offset;
+            Graphics graph = g;
             void DrawString(string text, bool center = false)
             {
                 string[] splitted = SplitMaxString(text);
                 foreach (string s in splitted)
                 {
-                    startY += offset * 2;
-                    g.DrawString(center ? EmptyStringCenter(s) : s, new Font("Hack NF", 10),
+                    y += off * 2;
+                    graph.DrawString(center ? EmptyStringCenter(s) : s, new Font("Hack NF", 10),
                         new SolidBrush(Color.Black),
-                        startX + offset, startY + offset);
+                        x + off, y + off);
                 }
             }
 
+            // Ganti background
+            graph.Clear(Color.White);
+
             // Awalan dikurang offset 2x
-            startY -= offset * 2;
+            y -= off * 2;
 
             // Header
             DrawString(RestaurantIdentity.Name);
@@ -114,7 +115,7 @@ namespace ProyekRPL.Apps.Report.Invoice
             DrawString("Telp. " + RestaurantIdentity.PhoneNumber);
 
             // Detail
-            startY += offset;
+            y += off;
             DateTime dateInvoice = DateTime.Parse(_data[0][5]);
             DrawString(string.Format("No.  : {0}", this._data[0][1]).PadRight(30, ' ') + dateInvoice.ToString("yyyy-MM-dd"));
             DrawString(string.Format("Kasir: {0}", this._data[0][2]).PadRight(32, ' ') + dateInvoice.ToString("HH:mm:ss"));
@@ -129,7 +130,7 @@ namespace ProyekRPL.Apps.Report.Invoice
                 int qtyItem = int.Parse(this._data[i][9]);
                 DrawString(
                     string.Format("{0}{1}",
-                    ((i+1).ToString() + ".").PadRight(4, ' '),
+                    ((i + 1).ToString() + ".").PadRight(4, ' '),
                     LimitString(this._data[i][7], 36).ToUpper())
                 );
                 DrawString(
@@ -167,9 +168,58 @@ namespace ProyekRPL.Apps.Report.Invoice
             );
 
             // Footer
-            startY += offset * 2;
+            y += off * 2;
             DrawString("Terima Kasih", true);
             DrawString("Selamat Menikmati", true);
+            y += off * 2;
+
+            // Pindahkan ke variabel pointer
+            startX = x; startY = y; offset = off; g = graph;
+        }
+
+        private Bitmap CreateReceipt()
+        {
+            int modifierX = 9;
+
+            Bitmap bitmap = new Bitmap(this._widthGraph * modifierX, this._widthGraph * 200);
+            int startX = 0;
+            int startY = 0;
+            int offset = 10;
+            Graphics graph = Graphics.FromImage(bitmap);
+            DrawingReceipt(ref graph, ref startX, ref startY, ref offset);
+
+            Bitmap cropped = bitmap.cropAtRect(new Rectangle(0, 0, this._widthGraph * modifierX, startY + 50));
+            return cropped;
+        }
+
+        private void ExitBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void SaveJpegBtn_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.Title = "Simpan struk";
+            dlg.Filter = "JPG Files (*.jpg)|*.jpg";
+            dlg.DefaultExt = "jpg";
+            dlg.RestoreDirectory = false;
+            dlg.FileName = string.Format("Invoice_{0}_{1}.jpg",
+                DateTime.Now.ToString("yyyy-MM-dd"),
+                this._param.InvoiceID.Replace('/', '_'));
+
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+
+            // Simpan struk
+            Bitmap invoice = CreateReceipt();
+            invoice.SaveJpeg(dlg.FileName, 100L);
+            MessageBox.Show("File berhasil disimpan!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
+        }
+
+        private void PrintInvoice_Load(object sender, EventArgs e)
+        {
+            SaveJpegBtn.Focus();
         }
     }
 }

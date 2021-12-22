@@ -11,6 +11,7 @@ namespace ProyekRPL.Apps.Report.Invoice
         public InvoiceList()
         {
             InitializeComponent();
+            Initial.ConfigDatabase();
         }
 
         public class PeekID
@@ -67,6 +68,15 @@ namespace ProyekRPL.Apps.Report.Invoice
             PeekID.Name = "";
             PeekID.Timestamp = "";
             PeekID.InvoiceID = "";
+        }
+
+        private void PrintBtn_Click(object sender, EventArgs e)
+        {
+            var param = new PrintInvoice.PrintInvoiceParam();
+            param.ID = uint.Parse(DataGridHelper.GetValueSelectedRow(OrderDataGrid, 0));
+            param.InvoiceID = DataGridHelper.GetValueSelectedRow(OrderDataGrid, 1);
+
+            using (var form = new PrintInvoice(param)) form.ShowDialog();
         }
     }
 }

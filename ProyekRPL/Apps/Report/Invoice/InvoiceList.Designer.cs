@@ -32,13 +32,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.OrderDataGrid = new MetroFramework.Controls.MetroGrid();
-            this.ViewOrderBtn = new MetroFramework.Controls.MetroButton();
-            this.PrintBtn = new MetroFramework.Controls.MetroButton();
-            this.RefreshBtn = new MetroFramework.Controls.MetroButton();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InvoiceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NamaPemesan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ViewOrderBtn = new MetroFramework.Controls.MetroButton();
+            this.PrintBtn = new MetroFramework.Controls.MetroButton();
+            this.RefreshBtn = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.OrderDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,35 +94,6 @@
             this.OrderDataGrid.TabIndex = 0;
             this.OrderDataGrid.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.OrderDataGrid_MouseDoubleClick);
             // 
-            // ViewOrderBtn
-            // 
-            this.ViewOrderBtn.Location = new System.Drawing.Point(542, 63);
-            this.ViewOrderBtn.Name = "ViewOrderBtn";
-            this.ViewOrderBtn.Size = new System.Drawing.Size(82, 57);
-            this.ViewOrderBtn.TabIndex = 1;
-            this.ViewOrderBtn.Text = "Lihat\r\nPesanan";
-            this.ViewOrderBtn.UseSelectable = true;
-            this.ViewOrderBtn.Click += new System.EventHandler(this.ViewOrderBtn_Click);
-            // 
-            // PrintBtn
-            // 
-            this.PrintBtn.Location = new System.Drawing.Point(542, 135);
-            this.PrintBtn.Name = "PrintBtn";
-            this.PrintBtn.Size = new System.Drawing.Size(82, 57);
-            this.PrintBtn.TabIndex = 2;
-            this.PrintBtn.Text = "Cetak";
-            this.PrintBtn.UseSelectable = true;
-            // 
-            // RefreshBtn
-            // 
-            this.RefreshBtn.Location = new System.Drawing.Point(542, 209);
-            this.RefreshBtn.Name = "RefreshBtn";
-            this.RefreshBtn.Size = new System.Drawing.Size(82, 57);
-            this.RefreshBtn.TabIndex = 3;
-            this.RefreshBtn.Text = "Refresh";
-            this.RefreshBtn.UseSelectable = true;
-            this.RefreshBtn.Click += new System.EventHandler(this.RefreshBtn_Click);
-            // 
             // ID
             // 
             this.ID.HeaderText = "ID";
@@ -150,6 +121,36 @@
             this.NamaPemesan.HeaderText = "Nama Pemesan";
             this.NamaPemesan.Name = "NamaPemesan";
             this.NamaPemesan.ReadOnly = true;
+            // 
+            // ViewOrderBtn
+            // 
+            this.ViewOrderBtn.Location = new System.Drawing.Point(542, 63);
+            this.ViewOrderBtn.Name = "ViewOrderBtn";
+            this.ViewOrderBtn.Size = new System.Drawing.Size(82, 57);
+            this.ViewOrderBtn.TabIndex = 1;
+            this.ViewOrderBtn.Text = "Lihat\r\nPesanan";
+            this.ViewOrderBtn.UseSelectable = true;
+            this.ViewOrderBtn.Click += new System.EventHandler(this.ViewOrderBtn_Click);
+            // 
+            // PrintBtn
+            // 
+            this.PrintBtn.Location = new System.Drawing.Point(542, 135);
+            this.PrintBtn.Name = "PrintBtn";
+            this.PrintBtn.Size = new System.Drawing.Size(82, 57);
+            this.PrintBtn.TabIndex = 2;
+            this.PrintBtn.Text = "Cetak";
+            this.PrintBtn.UseSelectable = true;
+            this.PrintBtn.Click += new System.EventHandler(this.PrintBtn_Click);
+            // 
+            // RefreshBtn
+            // 
+            this.RefreshBtn.Location = new System.Drawing.Point(542, 209);
+            this.RefreshBtn.Name = "RefreshBtn";
+            this.RefreshBtn.Size = new System.Drawing.Size(82, 57);
+            this.RefreshBtn.TabIndex = 3;
+            this.RefreshBtn.Text = "Refresh";
+            this.RefreshBtn.UseSelectable = true;
+            this.RefreshBtn.Click += new System.EventHandler(this.RefreshBtn_Click);
             // 
             // InvoiceList
             // 

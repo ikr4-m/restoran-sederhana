@@ -175,7 +175,7 @@ namespace ProyekRPL.Apps.Cashier
             if (PayPrice > 0)
             {
                 // Simpan semua datanya ke database
-                string query = string.Format("INSERT INTO pesanan (user_id, nama_pemesan, nomor_meja) VALUES ('{0}','{1}','{2}')",
+                string query = string.Format("INSERT INTO pesanan (user_id, nama_pemesan, nomor_meja) VALUES ('{0}','{1}','{2}'); SELECT LAST_INSERT_ID();",
                     GlobalState.ThatUserLogin.ID,
                     CustomerNameTxt.Text,
                     TableNumberTxt.Value);
@@ -195,7 +195,7 @@ namespace ProyekRPL.Apps.Cashier
                 ChangeLabel.Visible = true;
                 BuyBtn.Enabled = false;
                 PrintBtn.Enabled = true;
-                InvoiceIDTxt.Text = Transaction.InvoiceID.ToString();
+                InvoiceIDTxt.Text = lastID.ToString().PadLeft(5, '0') + "/KSR/" + DateTime.Now.ToString("yyyy");
             }
         }
 

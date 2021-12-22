@@ -204,6 +204,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Module\DataGridHelper.cs" />
+    <Compile Include="Module\ImageExtensions.cs" />
     <Compile Include="Module\IniFile.cs" />
     <Compile Include="Module\LoadingScreen.cs">
       <SubType>Form</SubType>
