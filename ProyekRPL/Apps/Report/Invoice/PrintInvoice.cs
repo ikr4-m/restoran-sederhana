@@ -199,14 +199,16 @@ namespace ProyekRPL.Apps.Report.Invoice
 
         private void SaveJpegBtn_Click(object sender, EventArgs e)
         {
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Title = "Simpan struk";
-            dlg.Filter = "JPG Files (*.jpg)|*.jpg";
-            dlg.DefaultExt = "jpg";
-            dlg.RestoreDirectory = false;
-            dlg.FileName = string.Format("Invoice_{0}_{1}.jpg",
-                DateTime.Now.ToString("yyyy-MM-dd"),
-                this._param.InvoiceID.Replace('/', '_'));
+            SaveFileDialog dlg = new SaveFileDialog
+            {
+                Title = "Simpan struk",
+                Filter = "JPG Files (*.jpg)|*.jpg",
+                DefaultExt = "jpg",
+                RestoreDirectory = false,
+                FileName = string.Format("Invoice_{0}_{1}.jpg",
+                    DateTime.Now.ToString("yyyy-MM-dd"),
+                    this._param.InvoiceID.Replace('/', '_'))
+            };
 
             if (dlg.ShowDialog() != DialogResult.OK) return;
 

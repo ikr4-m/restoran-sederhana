@@ -72,9 +72,11 @@ namespace ProyekRPL.Apps.Report.Invoice
 
         private void PrintBtn_Click(object sender, EventArgs e)
         {
-            var param = new PrintInvoice.PrintInvoiceParam();
-            param.ID = uint.Parse(DataGridHelper.GetValueSelectedRow(OrderDataGrid, 0));
-            param.InvoiceID = DataGridHelper.GetValueSelectedRow(OrderDataGrid, 1);
+            var param = new PrintInvoice.PrintInvoiceParam
+            {
+                ID = uint.Parse(DataGridHelper.GetValueSelectedRow(OrderDataGrid, 0)),
+                InvoiceID = DataGridHelper.GetValueSelectedRow(OrderDataGrid, 1)
+            };
 
             using (var form = new PrintInvoice(param)) form.ShowDialog();
         }

@@ -111,7 +111,7 @@ namespace ProyekRPL.Apps.Report.Transaction
                 string.Format(GlobalState.CultureInfo, "{0:C0}", this._totalAmount));
 
             // Convert data
-            Byte[] res = null;
+            byte[] res = null;
             using (MemoryStream ms = new MemoryStream())
             {
                 var pdf = PdfGenerator.GeneratePdf(html, PdfSharp.PageSize.A4);
@@ -120,12 +120,14 @@ namespace ProyekRPL.Apps.Report.Transaction
             }
 
             // Simpan data
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Title = "Simpan laporan";
-            dlg.Filter = "PDF Files (*.pdf)|*.pdf";
-            dlg.DefaultExt = "pdf";
-            dlg.RestoreDirectory = false;
-            dlg.FileName = string.Format("Report_{0}.pdf", DateTime.Now.ToString("yyyy-MM-dd"));
+            SaveFileDialog dlg = new SaveFileDialog
+            {
+                Title = "Simpan laporan",
+                Filter = "PDF Files (*.pdf)|*.pdf",
+                DefaultExt = "pdf",
+                RestoreDirectory = false,
+                FileName = string.Format("Report_{0}.pdf", DateTime.Now.ToString("yyyy-MM-dd"))
+            };
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {

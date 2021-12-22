@@ -13,7 +13,7 @@ namespace ProyekRPL
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Apps.Report.Invoice.InvoiceList());
+            Application.Run(new MainForm());
         }
     }
 }
