@@ -11,7 +11,6 @@ namespace ProyekRPL.Apps.Report.Invoice
         public InvoiceList()
         {
             InitializeComponent();
-            Initial.ConfigDatabase();
         }
 
         public class PeekID

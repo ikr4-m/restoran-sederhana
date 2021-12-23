@@ -18,6 +18,7 @@ namespace ProyekRPL
         {
             None, Admin, Kasir, Koki, Waiter
         }
+
         /// <summary>
         /// Yang login saat itu
         /// </summary>

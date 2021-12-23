@@ -142,7 +142,7 @@ namespace ProyekRPL.Apps.Report.Invoice
                     )
                 );
 
-                total += money;
+                total += money * qtyItem;
                 qty += qtyItem;
             }
             DrawString(new string('-', this._widthGraph));
@@ -172,8 +172,8 @@ namespace ProyekRPL.Apps.Report.Invoice
             y += off * 2;
             DrawString("Terima Kasih", true);
             DrawString("Selamat Menikmati", true);
-            y += off * 8;
-            DrawString(".");
+            y += off * 14;
+            DrawString("---");
 
             // Pindahkan ke variabel pointer
             startX = x; startY = y; offset = off; g = graph;
@@ -231,16 +231,25 @@ namespace ProyekRPL.Apps.Report.Invoice
             PrintDocument pd = new PrintDocument();
             pd.PrintPage += Pd_PrintPage;
             pd.DefaultPageSettings.PaperSize = new PaperSize("48 x 210mm", 189, 827);
+
             PrintPreviewDialog ppvw = new PrintPreviewDialog();
             ppvw.Document = pd;
             ppvw.ShowDialog();
+
+            //pd.Print();
+            //this.Close();
         }
 
         private void Pd_PrintPage(object sender, PrintPageEventArgs e)
         {
             Image img = CreateReceipt();
             var pg = e.PageBounds;
-            pg.Height = img.Height - 300;
+
+            if (img.Width / (double)img.Height > pg.Width / (double)pg.Height)
+                pg.Height = (int)(img.Height / (double)img.Width * pg.Width);
+            else
+                pg.Width = (int)(img.Width / (double)img.Height * pg.Height);
+
             e.Graphics.DrawImage(img, pg);
         }
     }
