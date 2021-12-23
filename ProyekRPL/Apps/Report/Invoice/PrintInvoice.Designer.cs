@@ -61,6 +61,7 @@
             this.PrintBtn.TabIndex = 2;
             this.PrintBtn.Text = "Print";
             this.PrintBtn.UseVisualStyleBackColor = true;
+            this.PrintBtn.Click += new System.EventHandler(this.PrintBtn_Click);
             // 
             // PrintInvoice
             // 

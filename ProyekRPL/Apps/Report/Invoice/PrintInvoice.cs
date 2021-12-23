@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Windows.Forms;
 using ProyekRPL.Module;
 
@@ -97,9 +98,9 @@ namespace ProyekRPL.Apps.Report.Invoice
                 foreach (string s in splitted)
                 {
                     y += off * 2;
-                    graph.DrawString(center ? EmptyStringCenter(s) : s, new Font("Hack NF", 10),
+                    graph.DrawString(center ? EmptyStringCenter(s) : s, new Font("Hack NF", 20),
                         new SolidBrush(Color.Black),
-                        x + off, y + off);
+                        x, y + off);
                 }
             }
 
@@ -171,7 +172,8 @@ namespace ProyekRPL.Apps.Report.Invoice
             y += off * 2;
             DrawString("Terima Kasih", true);
             DrawString("Selamat Menikmati", true);
-            y += off * 2;
+            y += off * 8;
+            DrawString(".");
 
             // Pindahkan ke variabel pointer
             startX = x; startY = y; offset = off; g = graph;
@@ -179,16 +181,16 @@ namespace ProyekRPL.Apps.Report.Invoice
 
         private Bitmap CreateReceipt()
         {
-            int modifierX = 9;
+            int modifierWidth = (int)(this._widthGraph * 16 + Math.Floor((decimal)(this._widthGraph * 17 - this._widthGraph * 16)));
 
-            Bitmap bitmap = new Bitmap(this._widthGraph * modifierX, this._widthGraph * 200);
+            Bitmap bitmap = new Bitmap(modifierWidth, this._widthGraph * 200);
             int startX = 0;
             int startY = 0;
-            int offset = 10;
+            int offset = 25;
             Graphics graph = Graphics.FromImage(bitmap);
             DrawingReceipt(ref graph, ref startX, ref startY, ref offset);
 
-            Bitmap cropped = bitmap.cropAtRect(new Rectangle(0, 0, this._widthGraph * modifierX, startY + 50));
+            Bitmap cropped = bitmap.cropAtRect(new Rectangle(0, 0, modifierWidth, startY + 50));
             return cropped;
         }
 
@@ -222,6 +224,24 @@ namespace ProyekRPL.Apps.Report.Invoice
         private void PrintInvoice_Load(object sender, EventArgs e)
         {
             SaveJpegBtn.Focus();
+        }
+
+        private void PrintBtn_Click(object sender, EventArgs e)
+        {
+            PrintDocument pd = new PrintDocument();
+            pd.PrintPage += Pd_PrintPage;
+            pd.DefaultPageSettings.PaperSize = new PaperSize("48 x 210mm", 189, 827);
+            PrintPreviewDialog ppvw = new PrintPreviewDialog();
+            ppvw.Document = pd;
+            ppvw.ShowDialog();
+        }
+
+        private void Pd_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            Image img = CreateReceipt();
+            var pg = e.PageBounds;
+            pg.Height = img.Height - 300;
+            e.Graphics.DrawImage(img, pg);
         }
     }
 }
