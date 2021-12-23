@@ -15,6 +15,7 @@ namespace ProyekRPL.Apps.Cashier
 
         public static int GrandTotalPrice = 0;
         public static int PayPrice = 0;
+        private uint _ID = 0;
 
         public MainForm()
         {
@@ -180,6 +181,7 @@ namespace ProyekRPL.Apps.Cashier
                     CustomerNameTxt.Text,
                     TableNumberTxt.Value);
                 var lastID = SQL.NonReturnQuery(query).LastInsertedId;
+                this._ID = (uint)lastID;
 
                 // Simpan data di tabel ke database
                 query = "INSERT INTO list_pesanan (pesanan_id, menu_id, qty) VALUES ";
@@ -201,7 +203,13 @@ namespace ProyekRPL.Apps.Cashier
 
         private void PrintBtn_Click(object sender, EventArgs e)
         {
-            //
+            var param = new Report.Invoice.PrintInvoice.PrintInvoiceParam
+            {
+                ID = this._ID,
+                PayPrice = PayPrice,
+                InvoiceID = InvoiceIDTxt.Text
+            };
+            using (var form = new Report.Invoice.PrintInvoice(param)) form.ShowDialog();
         }
 
         private void ResetBtn_Click(object sender, EventArgs e)

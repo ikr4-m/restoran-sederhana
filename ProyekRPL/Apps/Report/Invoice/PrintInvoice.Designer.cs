@@ -48,7 +48,7 @@
             this.ExitBtn.Location = new System.Drawing.Point(244, 12);
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.Size = new System.Drawing.Size(110, 67);
-            this.ExitBtn.TabIndex = 1;
+            this.ExitBtn.TabIndex = 2;
             this.ExitBtn.Text = "Exit";
             this.ExitBtn.UseVisualStyleBackColor = true;
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
@@ -58,7 +58,7 @@
             this.PrintBtn.Location = new System.Drawing.Point(128, 12);
             this.PrintBtn.Name = "PrintBtn";
             this.PrintBtn.Size = new System.Drawing.Size(110, 67);
-            this.PrintBtn.TabIndex = 2;
+            this.PrintBtn.TabIndex = 1;
             this.PrintBtn.Text = "Print";
             this.PrintBtn.UseVisualStyleBackColor = true;
             this.PrintBtn.Click += new System.EventHandler(this.PrintBtn_Click);

@@ -40,6 +40,11 @@ namespace ProyekRPL.Apps.Cashier
 
         private void ExecuteBtn_Click(object sender, EventArgs e)
         {
+            if (int.Parse(ChangeTxt.Text) < 0)
+            {
+                MessageBox.Show("Kembalian tidak boleh minus!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             this.Close();
         }
 
