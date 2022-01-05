@@ -76,7 +76,7 @@ namespace ProyekRPL.Apps.Cashier
 
         private void RefreshMenuData()
         {
-            this.MenuInsertDatagrid(SQL.GetDataQuery("SELECT id, nama_menu, harga FROM menu"));
+            this.MenuInsertDatagrid(SQL.GetDataQuery("SELECT id, nama_menu, harga FROM menu WHERE status_menu='1'"));
         }
 
         private void UpdatePrice()
